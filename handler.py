@@ -23,14 +23,11 @@ def handler(event, context):
     except KeyError:
         response = {
             "statusCode": 400,
-            "body": "Bad request"
+            "body": "400 Bad request"
         }
-    finally:
-        return response
 
+    return response
 
-
-    # find appropriate music and send to tracklist
 
 
 
