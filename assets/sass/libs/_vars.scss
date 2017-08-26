@@ -7,7 +7,9 @@
 // Duration.
 	$duration: (
 		transition:						0.2s,
-		gallery-lightbox-fadein:		0.5s
+		gallery-lightbox-fadein:		0.5s,
+		cal_y:							350ms,
+		cal_blur:						100ms
 	);
 
 // Size.
@@ -34,11 +36,11 @@
 
 // Palette.
 	$palette: (
-		bg:								#2e2b37,
-		bg-alt:							#e1e6e1,
+		bg:								#4667AE,
+		bg-alt:							white,
 		fg:								rgba(255,255,255,0.75),
 		fg-bold:						#5B5B5B,
-		fg-light:						rgba(255,255,255,0.5),
+		fg-light:						white,
 		border:							rgba(255,255,255,0.25),
 		border-bg:						rgba(255,255,255,0.075),
 		border-bg-alt:					rgba(255,255,255,0.125),

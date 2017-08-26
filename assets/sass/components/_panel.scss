@@ -16,8 +16,7 @@
 		$desaturate: 3;
 
 		&.color0 {
-			// @include gradient-background(false, 1, 20%, 60%);
-			background-color: #4667AE;
+			background-color: _palette(bg);
 		}
 
 		&.color1 {
@@ -297,5 +296,8 @@
 			}
 
 			@include panel-colors-small;
+		}
+		.panel > *.color0 {
+			background-color: _palette(bg-alt);
 		}
 	}

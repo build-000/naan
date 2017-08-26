@@ -753,6 +753,27 @@
 
 							});
 
+		// Emoji Moblie Popup
+			$('#emoji-mobile-popup').click(function (e) { 
+				show_emoji_mobile(e);
+			});
+
+			$(document).mouseup(function(e) {
+				var container = $("#emoji-mobile");
+				if (!container.is(e.target) && container.has(e.target).length === 0) 
+					close_emoji_mobile();
+			});
+			function show_emoji_mobile(e) {
+				$('#emoji-mobile').addClass('loaded');
+				$('.overlay').removeClass('blur-out');
+				$('.overlay').addClass('blur-in');
+				e.preventDefault();
+			}
+			function close_emoji_mobile() {
+				$('#emoji-mobile').removeClass('loaded');
+				$('.overlay').removeClass('blur-in');
+				$('.overlay').addClass('blur-out');
+			}
 		});
 
 })(jQuery);

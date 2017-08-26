@@ -8,10 +8,9 @@
 		@include vendor('align-items', 'stretch');
 
 		.content {
-			@include padding($pad, $pad);
+			padding: 1.3rem 3.5rem 2rem 3.5rem;
 			@include vendor('display', 'flex');
 			@include vendor('flex-direction', 'column');
-			@include vendor('justify-content', 'center');
 			@include vendor('flex-grow', '0');
 			@include vendor('flex-shrink', '0');
 
@@ -49,13 +48,28 @@
 		.naan-right {
 			width: 65%;
 			text-align: center;
+			h2, h3 {
+				color: _palette(fg-light);
+				font-weight: normal;
+			}
+			nav {
+				.left {
+					position: absolute;
+					left: 2rem;
+				}
+				.right {
+					position: absolute;
+					right: 2rem;
+				}
+			}
 		}
 
 		#cover-img {
 			width: 100%;
+			margin-top: 1rem;
 			img {
-				width: 448px;
-				height: 448px;
+				width: 328px;
+				height: 328px;
 				background: white;
 				border-radius: 50%;
 			}
