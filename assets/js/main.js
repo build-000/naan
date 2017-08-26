@@ -76,7 +76,7 @@ var getTracksDone = function(list){
 };
 
 var getTracks = function(){
-  var mood = 'happy';
+  var mood = 'angry';
    navigator.geolocation.getCurrentPosition(function(position){
       var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks?mood=' + mood + '&lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
       $.ajax({
@@ -92,7 +92,9 @@ var getTracks = function(){
 
 (function($) {
 
-getTracks();
+	getTracks();
+
+	var isplaying = false;
 
    $('#btnPrev').bind('click',function(){
       prevPlay();
@@ -100,10 +102,11 @@ getTracks();
 
    $('#btnPlay').bind('click',function(){
       var myaudio = document.getElementById("myaudio");
-    togglePlay(myaudio);
+      togglePlay(myaudio);
+      changePlayButton();
    });
 
-	var nextPlag = false;
+   var nextPlag = false;
    $('#btnNext').bind('click',function(){
       if (nextPlag == false){
          nextPlag = true;
@@ -118,6 +121,19 @@ getTracks();
    $('#myaudio').bind('ended',function(){
       nextPlay();
    });
+
+	function changePlayButton() {
+		if (!isplaying) {
+			$('#btnPlay').removeClass('naan-iconbtn_play');
+			$('#btnPlay').addClass('naan-iconbtn_pause');
+			isplaying = true;
+		} else {
+			$('#btnPlay').removeClass('naan-iconbtn_pause');
+			$('#btnPlay').addClass('naan-iconbtn_play');
+			isplaying = false;
+		}
+
+	}
 
 	// Settings.
 		var settings = {
