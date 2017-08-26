@@ -4,6 +4,22 @@
 #player-mobile, .nav-mobile {
 	display: none;
 }
+#btnPrev, #btnNext {
+	font-size: 2rem;
+}
+#btnPlay {
+	font-size: 3rem;
+}
+#btnNext, #btnPlay  {
+	margin-left: 5rem;
+}
+.actions {
+	span {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
 @include breakpoint(small) {
 	#player-pc, .nav-pc {
 		display: none;
@@ -22,5 +38,17 @@
 			position: absolute;
 			right: 2rem;
 		}
+	}
+	#btnPrev, #btnNext {
+		font-size: 1.5rem;
+	}
+	#btnPlay {
+		font-size: 2rem;
+	}
+	#btnNext, #btnPlay  {
+		margin-left: 2.7rem;
+	}
+	#emoji-mobile-popup {
+		margin-left: 12px;
 	}
 }

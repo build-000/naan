@@ -11,15 +11,17 @@
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
-
+					<div>
+						<audio id="myaudio" preload="auto"></audio>
+					</div>
 				<!-- Wrapper -->
 					<div id="wrapper" class="overlay">
 						<!-- Panel (Banner) -->
 							<section class="panel banner right">
 								<div class="content color0 span-3-75 naan-right">
 									<nav class="nav-pc">
-										<a class="naan-icon color1 circle icon fa-plus left"></a>
-										<a class="naan-icon color1 circle icon fa-plus right"></a>
+										<span class="naan-icon naan-iconbtn_more left"></span>
+										<span class="naan-icon naan-iconbtn_list right"></span>
 									</nav>
 									<nav class="nav-mobile">
 										<a href="">Game</a>
@@ -31,9 +33,9 @@
 											<img src="images/demo.png" />
 										</div>
 										<ul class="actions">
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
+											<span id="btnPrev" class="naan-icon naan-iconbtn_backward"></span>
+											<span id="btnPlay" class="naan-icon naan-iconbtn_play"></span>
+											<span id="btnNext" class="naan-icon naan-iconbtn_forward"></span>
 										</ul>
 									</div>
 									<div id="player-mobile">
@@ -46,9 +48,9 @@
 										<h3>CALVIN HARRIS</h3>
 										<ul class="actions">
 											<li><a href="">List</a></li>
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
-											<li><a href="#first" class="button special color1 circle icon fa-angle-right">Next</a></li>
+											<span id="btnPrev" class="naan-icon naan-iconbtn_backward"></span>
+											<span id="btnPlay" class="naan-icon naan-iconbtn_play"></span>
+											<span id="btnNext" class="naan-icon naan-iconbtn_forward"></span>
 											<li><a id="emoji-mobile-popup">Feeling</a></li>
 										</ul>
 									</div>
@@ -57,7 +59,8 @@
 									<div class="gallery">
 										<div class="group span-3">
 											<div id="naan-weather-info">
-												<a class="naan-icon color1 circle icon fa-cloud"></a>
+											<!-- 	<a class="naan-icon color1 circle icon fa-cloud"></a> -->
+											<span class="naan-icon naan-iconicn_cool"></span>
 												<h1>24c</h1>
 											</div>
 											<div id="naan-emoji-select">
