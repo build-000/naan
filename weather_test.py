@@ -7,6 +7,7 @@ parsed = json.loads(sample_data)
 latitude = parsed['latitude']
 longitude = parsed['longitude']
 
-res = WeatherInfo.parse_weather(WeatherInfo.get_weather(latitude, longitude))
+tmp = WeatherInfo.get_weather(latitude, longitude)
+print(tmp)
+res = WeatherInfo.parse_weather(tmp)
 WeatherInfo.repack(res)
-

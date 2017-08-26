@@ -9,26 +9,29 @@ API_KEY = 'f68bb0f0512ac1c6aa506b31bfd66474'
 
 
 def handler(event, context):
-    # test
-    # latitude and longitude will come thru request
-    parsed = event
+    log.info('got event{}'.format(event))
+    latitude = event["queryStringParameters"]['lat']
+    longitude = event["queryStringParameters"]['lng']
 
-    # sample data
-    # sample_data = '{"latitude":37.5371163,"longitude":127.0078127}'
-    # parsed = json.loads(sample_data)
+    try:
+        data = WeatherInfo.get_weather(latitude, longitude)
+        result = WeatherInfo.parse_weather(data)
+        response = {
+            "statusCode": 200,
+            "body": json.dumps(result, ensure_ascii=False, indent='\t')
+        }
+    except KeyError:
+        response = {
+            "statusCode": 400,
+            "body": "Bad request"
+        }
+    finally:
+        return response
 
-    latitude = parsed['latitude']
-    longitude = parsed['longitude']
 
-    data = WeatherInfo.get_weather(latitude, longitude)
-    # to append to final json string
-    result = WeatherInfo.parse_weather(data)
 
     # find appropriate music and send to tracklist
 
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(result, ensure_ascii=False, indent='\t')
-    }
 
-    return response
+
+
