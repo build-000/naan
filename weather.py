@@ -6,6 +6,7 @@ API_KEY = 'f68bb0f0512ac1c6aa506b31bfd66474'
 log = logging.getLogger()
 log.setLevel(logging.INFO)
 
+
 class WeatherInfo:
     @staticmethod
     def get_weather(lat, long):
