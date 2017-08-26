@@ -1,10 +1,5 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300i,400i");
-/*
-	Ethereal by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 /* Reset */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -2209,20 +2204,24 @@ button,
       left: 0;
       width: 100%;
       height: 100%; }
-  .panel.banner .naan-left:after {
-    -moz-pointer-events: none;
-    -webkit-pointer-events: none;
-    -ms-pointer-events: none;
-    pointer-events: none;
-    background: white;
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    z-index: 1; }
+  .panel.banner .naan-left {
+    width: 35%; }
+    .panel.banner .naan-left:after {
+      -moz-pointer-events: none;
+      -webkit-pointer-events: none;
+      -ms-pointer-events: none;
+      pointer-events: none;
+      background: white;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      z-index: 1; }
+  .panel.banner .naan-right {
+    width: 65%; }
   .panel.banner.left {
     -moz-flex-direction: row;
     -webkit-flex-direction: row;
@@ -2274,6 +2273,8 @@ button,
     flex-basis: auto;
     height: 18rem;
     display: none; }
+  .panel.banner .naan-right {
+    width: 100%; }
   .panel.banner.left {
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
@@ -2374,8 +2375,7 @@ button,
   -webkit-flex-shrink: 1;
   -ms-flex-shrink: 1;
   flex-shrink: 1;
-  height: 100%;
-  padding: 5rem; }
+  height: 100%; }
   @media screen and (orientation: portrait) {
     #page-wrapper {
       padding-left: 2rem;
@@ -2414,8 +2414,9 @@ button,
   transition-delay: 0.25s;
   cursor: default;
   position: relative;
-  height: 32rem;
-  box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575); }
+  height: 100%;
+  box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);
+  overflow: hidden; }
   #wrapper > .scrollZone {
     position: fixed;
     width: 6rem;

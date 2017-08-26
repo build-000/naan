@@ -43,6 +43,7 @@
 		}
 
 		.naan-left {
+			width: 35%;
 			&:after {
 				@include vendor('pointer-events', 'none');
 				background: white;
@@ -55,6 +56,10 @@
 				opacity: 1;
 				z-index: 1;
 			}
+		}
+
+		.naan-right {
+			width: 65%;
 		}
 
 		&.left {
@@ -101,6 +106,10 @@
 					@include vendor('flex-basis', 'auto');
 					height: 18rem;
 					display: none;
+				}
+
+				.naan-right {
+					width: 100%;
 				}
 
 				&.left {

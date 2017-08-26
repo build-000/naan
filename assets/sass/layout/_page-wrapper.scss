@@ -13,7 +13,6 @@
 		@include vendor('flex-grow', '1');
 		@include vendor('flex-shrink', '1');
 		height: 100%;
-		padding: 5rem;
 
 		@include orientation(portrait) {
 			padding-left: 2rem;
