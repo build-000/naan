@@ -1,9 +1,9 @@
 {
-	"location": "Buenos Aires",
+	"location": "Melbourne",
 	"coord": {
-		"lon": -58.37,
-		"lat": -34.61
+		"lon": 144.96,
+		"lat": -37.81
 	},
-	"weather_description": "Mist",
-	"temp_description": 14.0
+	"weather_description": "Rain",
+	"temp_description": "cool"
 }
