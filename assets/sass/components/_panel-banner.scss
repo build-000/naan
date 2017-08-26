@@ -38,6 +38,9 @@
 
 		.naan-left {
 			width: 35%;
+			.gallery {
+				width: 100%;
+			}
 			&:after {
 				@include vendor('pointer-events', 'none');
 			}

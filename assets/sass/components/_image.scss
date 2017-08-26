@@ -13,7 +13,6 @@
 
 		&.filtered {
 			&:after {
-				@include gradient-background;
 				@include vendor('pointer-events', 'none');
 				content: '';
 				position: absolute;
