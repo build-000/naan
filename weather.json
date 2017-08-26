@@ -1,0 +1,9 @@
+{
+	"location": "Buenos Aires",
+	"coord": {
+		"lon": -58.37,
+		"lat": -34.61
+	},
+	"weather_description": "Mist",
+	"temp_description": 14.0
+}

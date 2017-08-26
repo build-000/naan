@@ -1,3 +1,5 @@
-import weather
+from weather import Weather
 
-print(weather.get_weather(40.416775, -3.703790))
+res = Weather.parse_weather(Weather.get_weather(-34.6083, -58.3712))
+Weather.repack(res)
+
