@@ -1,4 +1,4 @@
-# Nareum
+# Naan (난)
 
 When user press ‘emoji 😆’, our app throw it with weather info to get music play list for that situation.
 
