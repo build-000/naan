@@ -2221,7 +2221,15 @@ button,
       opacity: 1;
       z-index: 1; }
   .panel.banner .naan-right {
-    width: 65%; }
+    width: 65%;
+    text-align: center; }
+  .panel.banner #cover-img {
+    width: 100%; }
+    .panel.banner #cover-img img {
+      width: 448px;
+      height: 448px;
+      background: white;
+      border-radius: 50%; }
   .panel.banner.left {
     -moz-flex-direction: row;
     -webkit-flex-direction: row;
@@ -2231,7 +2239,8 @@ button,
     -moz-flex-direction: row-reverse;
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
-    flex-direction: row-reverse; }
+    flex-direction: row-reverse;
+    width: 100%; }
 
 @media screen and (max-width: 736px) {
   .panel.banner .content {
@@ -2251,7 +2260,10 @@ button,
     -moz-flex-basis: 40%;
     -webkit-flex-basis: 40%;
     -ms-flex-basis: 40%;
-    flex-basis: 40%; } }
+    flex-basis: 40%; }
+  .panel.banner #cover-img img {
+    width: 247px;
+    height: 247px; } }
 @media screen and (max-width: 736px) and (orientation: portrait) {
   .panel.banner .content {
     -moz-flex-basis: auto;
@@ -2416,7 +2428,8 @@ button,
   position: relative;
   height: 100%;
   box-shadow: 0 2rem 4rem 0.25rem rgba(46, 43, 55, 0.575);
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100vw; }
   #wrapper > .scrollZone {
     position: fixed;
     width: 6rem;
