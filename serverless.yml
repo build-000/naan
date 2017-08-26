@@ -13,4 +13,5 @@ functions:
     handler: handler
     events:
       - http:
+          path: weather
           method: get
