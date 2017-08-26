@@ -26,8 +26,8 @@
 
 // Font.
 	$font: (
-		family:							('Source Sans Pro', Helvetica, sans-serif),
-		family-heading:					(Arial, Helvetica, sans-serif),
+		family:							('AppleSDGothicNeoR', 'Source Sans Pro', Helvetica, sans-serif),
+		family-heading:					('SF-UI-Display', 'AppleSDGothicNeoR', Arial, Helvetica, sans-serif),
 		family-fixed:					('Courier New', monospace),
 		weight:							300,
 		weight-bold:					400,
@@ -36,7 +36,7 @@
 
 // Palette.
 	$palette: (
-		bg:								#4667AE,
+		bg:								#F6F6F6,
 		bg-alt:							white,
 		fg:								rgba(255,255,255,0.75),
 		fg-bold:						#5B5B5B,

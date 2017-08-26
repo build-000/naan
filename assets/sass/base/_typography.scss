@@ -1,5 +1,40 @@
 /* Typography */
 
+@font-face {
+	font-family: 'AppleSDGothicNeoR';
+	src: url('../fonts/AppleSDGothicNeoR.eot');
+	src: url('../fonts/AppleSDGothicNeoR.woff2') format('woff2'),
+		url('../fonts/AppleSDGothicNeoR.woff') format('woff'),
+		url('../fonts/AppleSDGothicNeoR.ttf') format('truetype'),
+		url('../fonts/AppleSDGothicNeoR.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'SF-UI-Display';
+	font-weight: 700;
+	src: local('SF-UI-Display-Bold'),
+	url('../fonts/SF-UI-Display-Bold.woff2') format('woff2'),
+	url('../fonts/SF-UI-Display-Bold.woff') format('woff'),
+	url('../fonts/SF-UI-Display-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'SF-UI-Display';
+	font-weight: 400;
+	src: local('SF-UI-Display-Medium'),
+	url('../fonts/SF-UI-Display-Medium.woff2') format('woff2'),
+	url('../fonts/SF-UI-Display-Medium.woff') format('woff'),
+	url('../fonts/SF-UI-Display-Medium.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'SF-UI-Display';
+	font-weight: 300;
+	src: local('SF-UI-Display-Regular'),
+	url('../fonts/SF-UI-Display-Regular.woff2') format('woff2'),
+	url('../fonts/SF-UI-Display-Regular.woff') format('woff'),
+	url('../fonts/SF-UI-Display-Regular.ttf') format('truetype');
+}
+
 	html {
 		font-size: 18pt;
 		font-size: 1vmax;
@@ -16,7 +51,7 @@
 	}
 
 	body, input, select, textarea {
-		color: _palette(fg);
+		color: _palette(fg-bold);
 		font-family: _font(family);
 		font-size: 1rem;
 		font-weight: _font(weight);

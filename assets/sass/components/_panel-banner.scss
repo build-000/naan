@@ -36,7 +36,7 @@
 		}
 
 		.naan-left {
-			width: 35%;
+			width: 26%;
 			.gallery {
 				width: 100%;
 			}
@@ -46,11 +46,13 @@
 		}
 
 		.naan-right {
-			width: 65%;
+			width: 74%;
 			text-align: center;
-			h2, h3 {
-				color: _palette(fg-light);
-				font-weight: normal;
+			h2 {
+				font-weight: 400;
+			}
+			h3 {
+				font-weight: 300;
 			}
 			nav {
 				.left {
