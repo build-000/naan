@@ -4,13 +4,13 @@
 #player-mobile, .nav-mobile {
 	display: none;
 }
-#btnPrev, #btnNext {
+.btnPrev, .btnNext {
 	font-size: 2rem;
 }
-#btnPlay {
+.btnPlay {
 	font-size: 3rem;
 }
-#btnNext, #btnPlay  {
+.btnNext, .btnPlay  {
 	margin-left: 5rem;
 }
 .actions {
@@ -39,13 +39,13 @@
 			right: 2rem;
 		}
 	}
-	#btnPrev, #btnNext {
+	.btnPrev, .btnNext {
 		font-size: 1.5rem;
 	}
-	#btnPlay {
+	.btnPlay {
 		font-size: 2rem;
 	}
-	#btnNext, #btnPlay  {
+	.btnNext, .btnPlay  {
 		margin-left: 2.7rem;
 	}
 	#emoji-mobile-popup {

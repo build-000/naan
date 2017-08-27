@@ -58,8 +58,11 @@ var getTracksDone = function(list){
   var myaudio = document.getElementById("myaudio");
   var client_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
 
+  console.log('list : ');
+  console.log(list);
+
    for (var i=0;i<list.length;i++){
-      var stream_url = list[i].stream_url + '?client_id=' + client_id;
+      var stream_url = list[i].track.stream_url + '?client_id=' + client_id;
       var source = document.createElement('source');
       source.setAttribute('src',stream_url);
       myaudio.appendChild(source);
@@ -76,9 +79,14 @@ var getTracksDone = function(list){
 };
 
 var getTracks = function(){
+  var weather = 'warm';
   var mood = 'angry';
    navigator.geolocation.getCurrentPosition(function(position){
-      var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks?mood=' + mood + '&lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
+      // var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks?mood=' + mood + '&lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
+
+	changeCoverPic(mood, weather);
+
+	var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions?mood=' + mood + '&weather=' + weather;
       $.ajax({
          url: url
       }).success(
@@ -90,24 +98,29 @@ var getTracks = function(){
  });
 };
 
+function changeCoverPic() {
+	// document.getElementById('myImage').src = '/images/weather/' + weather + '-' + mood'.jpg';
+	document.getElementById('myImage').src = window.location.href + 'images/weather/' + weather + '-' + mood + '.jpg';
+}
+
 (function($) {
 
 	getTracks();
 
 	var isplaying = false;
 
-   $('#btnPrev').bind('click',function(){
+   $('.btnPrev').bind('click',function(){
       prevPlay();
    });
 
-   $('#btnPlay').bind('click',function(){
+   $('.btnPlay').bind('click',function(){
       var myaudio = document.getElementById("myaudio");
       togglePlay(myaudio);
       changePlayButton();
    });
 
    var nextPlag = false;
-   $('#btnNext').bind('click',function(){
+   $('.btnNext').bind('click',function(){
       if (nextPlag == false){
          nextPlag = true;
          nextPlay();
@@ -124,15 +137,14 @@ var getTracks = function(){
 
 	function changePlayButton() {
 		if (!isplaying) {
-			$('#btnPlay').removeClass('naan-iconbtn_play');
-			$('#btnPlay').addClass('naan-iconbtn_pause');
+			$('.btnPlay').removeClass('naan-iconbtn_play');
+			$('.btnPlay').addClass('naan-iconbtn_pause');
 			isplaying = true;
 		} else {
-			$('#btnPlay').removeClass('naan-iconbtn_pause');
-			$('#btnPlay').addClass('naan-iconbtn_play');
+			$('.btnPlay').removeClass('naan-iconbtn_pause');
+			$('.btnPlay').addClass('naan-iconbtn_play');
 			isplaying = false;
 		}
-
 	}
 
 	// Settings.
