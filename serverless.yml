@@ -1,0 +1,15 @@
+service: Naan # NOTE: update this with your service name
+provider:
+  name: aws
+  runtime: python3.6
+  region: ap-northeast-2
+package:
+  exclude:
+    - weather_test.py
+functions:
+  getWeather:
+    handler: handler.handler
+    events:
+      - http:
+          path: weather
+          method: get

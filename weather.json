@@ -1,0 +1,9 @@
+{
+	"location": "Melbourne",
+	"coord": {
+		"lon": 144.96,
+		"lat": -37.81
+	},
+	"weather_description": "Rain",
+	"temp_description": "cool"
+}

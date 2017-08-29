@@ -34,3 +34,40 @@ node_modules
 
 # Jetbrains IDE Configurations
 .idea
+
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+certifi/
+certifi-2017.7.27.1.dist-info/
+chardet/
+chardet-3.0.4.dist-info/
+idna/
+idna-2.6.dist-info/
+requests/
+requests-2.18.4.dist-info/
+urllib3/
+urllib3-1.22.dist-info/
+
+# Serverless directories
+.serverless
+
+.idea/*
+.vscode/*
+__pycache__/*
