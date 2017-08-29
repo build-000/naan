@@ -35,6 +35,10 @@ node_modules
 # Jetbrains IDE Configurations
 .idea
 
+# sass-cache
+.sass-cache
+
+
 
 # Distribution / packaging
 .Python
