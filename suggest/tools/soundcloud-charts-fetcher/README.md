@@ -19,7 +19,9 @@ Client ID of Registered Soundcloud Application
 > $ npm install
 >
 > $ env SOUNDCLOUD_CLIENT_ID=YOUR_SOUNDCLOUD_CLIENT_ID $(npm bin)/ts-node index.js
-> # or also you can use npx  
+>
+> \# or also you can use npx  
+>
 > $ env SOUNDCLOUD_CLIENT_ID=YOUR_SOUNDCLOUD_CLIENT_ID npx ts-node index.js
 
 
