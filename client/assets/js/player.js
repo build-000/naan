@@ -20,7 +20,6 @@ function pauseAudio(myaudio) {
 	myaudio.pause();
 };
 function selectTrack(track_num){
-	console.log('track_num : ' + track_num);
 	if (myaudio.childNodes[track_num]){
 		myaudio.src = myaudio.childNodes[track_num].src;
 	}
@@ -61,8 +60,6 @@ var getTracksDone = function(list){
 	g_list = list;
 	var myaudio = document.getElementById("myaudio");
 	var client_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
-			console.log('list : ');
-			console.log(list);
 	for (var i=0;i<list.length;i++){
 			var stream_url = list[i].track.stream_url + '?client_id=' + client_id;
 			var source = document.createElement('source');
@@ -75,10 +72,6 @@ var getTracksDone = function(list){
 
 var weather;
 var getTracks = function(mood){
-	// var mood = 'angry';
-	console.log('getTracks');
-	console.log('mood : ' + mood);
-	console.log('weather : ' + weather);
 	var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions?mood=' + mood + '&weather=' + weather + '&count=40';
 	$.ajax({
 		 url: url
@@ -93,9 +86,6 @@ var getTracks = function(mood){
 };
 
 var getCurrentWeatherDone = function(data){
-	console.log('weather : ');
-	console.log(data);
-	console.log(data['temp_description']);
 	$('#naan-w-info').addClass('naan-iconicn_' + data['temp_description']);
 	weather = data.temp_description;
 }
@@ -150,7 +140,6 @@ var getCurrentWeather = function(){
 	$('#myaudio').bind('playing',function(){
 			console.log('playing');
 	});
-
 	$('#myaudio').bind('ended',function(){
 			nextPlay();
 	});
@@ -158,8 +147,6 @@ var getCurrentWeather = function(){
 
 	function changePlayButton() {
 		var myaudio = document.getElementById("myaudio");
-			console.log('myaudio : ');
-			console.log(myaudio);
 		if (!isplaying) {
 			$('.btnPlay').removeClass('naan-iconbtn_play');
 			$('.btnPlay').addClass('naan-iconbtn_pause');
