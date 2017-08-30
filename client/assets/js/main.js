@@ -59,7 +59,7 @@ function prevPlay(){
 function changeCoverPic(mood, weather) {
 	console.log(window.location.href + 'images/weather/' + weather + '-' + mood + '.jpg');
 
-	$(".myImage").attr("src",'/Naan/images/weather/'+ weather + '-' + mood + '.jpg');
+	$(".myImage").attr("src", window.location + '/images/weather/'+ weather + '-' + mood + '.jpg');
 }
 
 
