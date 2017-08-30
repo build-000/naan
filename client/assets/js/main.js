@@ -9,7 +9,9 @@ function playAudio(myaudio) {
    // play button change
    document.getElementById("btnPlay").innerHTML = "Pause";
    */
-  myaudio.play();
+   
+   setTimeout(function(){ myaudio.play(); }, 3000);
+
    nextPlag = false;
 };
 function pauseAudio(myaudio) {
@@ -21,17 +23,19 @@ function pauseAudio(myaudio) {
   myaudio.pause();
 };
 function togglePlay(myaudio) {
-  if (myaudio.paused == true){
-      console.log(myaudio.paused)
-    playAudio(myaudio);
-  }else{
-    pauseAudio(myaudio);
-  }
+  // if (myaudio.paused == true){
+  //     console.log(myaudio.paused)
+  //   playAudio(myaudio);
+  // }else{
+  //   pauseAudio(myaudio);
+  // }
 };
 function selectTrack(track_num){
+	console.log('track_num : ' + track_num);
   if (myaudio.childNodes[track_num]){
     myaudio.src = myaudio.childNodes[track_num].src;
   }
+  changeMusciTitle(g_list, track_num)
 };
 function getTrackNum(){
   var track_num = Math.floor((Math.random() * myaudio.children.length));
@@ -45,52 +49,90 @@ function getTrackNum(){
 function nextPlay(){
   prevTrack = currentTrack;
   selectTrack(getTrackNum());
-  document.getElementById('btnPlay').click();
+  $('.btnPlay').click();
 };
 function prevPlay(){
   selectTrack(prevTrack);
-  document.getElementById('btnPlay').click();
+  $('.btnPlay').click();
 };
 
+function changeCoverPic(mood, weather) {
+	console.log(window.location.href + 'images/weather/' + weather + '-' + mood + '.jpg');
+
+	$(".myImage").attr("src",'/Naan/images/weather/'+ weather + '-' + mood + '.jpg');
+}
+
+
 var firstExcution = false;
+var g_list;
+
+function changeMusciTitle(list, index) {
+	document.getElementById("music-title").innerHTML = list[index].track.title;
+	document.getElementById("music-author").innerHTML = list[index].track.user.username;
+}
+
 var getTracksDone = function(list){
-   console.log(list)
+	g_list = list;
   var myaudio = document.getElementById("myaudio");
   var client_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
-
-  console.log('list : ');
-  console.log(list);
-
+   	  console.log('list : ');
+   	  console.log(list);
    for (var i=0;i<list.length;i++){
       var stream_url = list[i].track.stream_url + '?client_id=' + client_id;
       var source = document.createElement('source');
       source.setAttribute('src',stream_url);
       myaudio.appendChild(source);
-
    }
+   changeMusciTitle(list, 0);
+   $('.btnPlay').click();
 
-   if (firstExcution == false){
-      console.log('first')
-      firstExcution = true;
-      $('#btnPlay').click();
-   }
+   // if (firstExcution == false){
+   //    firstExcution = true;
+   //    console.log('first')
+   //    $('.btnPlay').click();
+   // }
+};
 
+var weather;
+
+var getTracks = function(mood){
+  // var mood = 'angry';
+  console.log('getTracks');
+  console.log('mood : ' + mood);
+  console.log('weather : ' + weather);
+  var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions?mood=' + mood + '&weather=' + weather + '&count=40';
+  $.ajax({
+     url: url
+  }).success(
+     getTracksDone.bind(this)
+  ).fail(function (e) {
+     // handle erorr
+     console.error("unexpected error: ", e);
+  });
+      changeCoverPic(mood, weather);
 
 };
 
-var getTracks = function(){
-  var weather = 'warm';
-  var mood = 'angry';
+
+var getCurrentWeatherDone = function(data){
+	console.log('weather : ');
+	console.log(data);
+	console.log(data['temp_description']);
+	$('#naan-w-info').addClass('naan-iconicn_' + data['temp_description']);
+	weather = data.temp_description;
+}
+function playByEmoji(mood) {
+	getTracks(mood);
+}
+var getCurrentWeather = function(){
+
+  // var mood = 'happy';
    navigator.geolocation.getCurrentPosition(function(position){
-      // var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks?mood=' + mood + '&lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
-
-	changeCoverPic(mood, weather);
-
-	var url = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions?mood=' + mood + '&weather=' + weather;
+      var url = 'https://7uiw9d5ck3.execute-api.ap-northeast-2.amazonaws.com/dev/weather?lat=' + position.coords.latitude + '&lng=' + position.coords.longitude;
       $.ajax({
          url: url
       }).success(
-         getTracksDone.bind(this)
+         getCurrentWeatherDone.bind(this)
       ).fail(function (e) {
          // handle erorr
          console.error("unexpected error: ", e);
@@ -98,16 +140,23 @@ var getTracks = function(){
  });
 };
 
-function changeCoverPic() {
-	// document.getElementById('myImage').src = '/images/weather/' + weather + '-' + mood'.jpg';
-	document.getElementById('myImage').src = window.location.href + 'images/weather/' + weather + '-' + mood + '.jpg';
-}
-
 (function($) {
 
-	getTracks();
-
+  getCurrentWeather();
 	var isplaying = false;
+
+	$('.angry').bind('click',function(){
+		playByEmoji('angry');
+		changePlayButtontoPause();
+	});
+	$('.happy').bind('click',function(){
+		playByEmoji('happy');
+		changePlayButtontoPause();
+	});
+	$('.relaxed').bind('click',function(){
+		playByEmoji('relaxed');
+		changePlayButtontoPause();
+	});
 
    $('.btnPrev').bind('click',function(){
       prevPlay();
@@ -121,10 +170,10 @@ function changeCoverPic() {
 
    var nextPlag = false;
    $('.btnNext').bind('click',function(){
-      if (nextPlag == false){
-         nextPlag = true;
+      // if (nextPlag == false){
+         // nextPlag = true;
          nextPlay();
-      }
+      // }
    });
 
    $('#myaudio').bind('playing',function(){
@@ -135,16 +184,30 @@ function changeCoverPic() {
       nextPlay();
    });
 
+
 	function changePlayButton() {
+		var myaudio = document.getElementById("myaudio");
+		// if (myaudio.paused == true){
+			console.log('myaudio : ');
+			console.log(myaudio);
+		// } else{
+		// }
 		if (!isplaying) {
 			$('.btnPlay').removeClass('naan-iconbtn_play');
 			$('.btnPlay').addClass('naan-iconbtn_pause');
+			playAudio(myaudio);
 			isplaying = true;
 		} else {
 			$('.btnPlay').removeClass('naan-iconbtn_pause');
 			$('.btnPlay').addClass('naan-iconbtn_play');
+			pauseAudio(myaudio);
 			isplaying = false;
 		}
+	}
+	function changePlayButtontoPause() {
+		$('.btnPlay').removeClass('naan-iconbtn_play');
+		$('.btnPlay').addClass('naan-iconbtn_pause');
+		isplaying = true;
 	}
 
 	// Settings.
@@ -484,8 +547,8 @@ function changeCoverPic() {
 				if (settings.scrollZones.enabled)
 					(function() {
 
-						var	$left = $('<div class="scrollZone left"></div>'),
-							$right = $('<div class="scrollZone right"></div>'),
+						var	$left = $(''),
+							$right = $(''),
 							$zones = $left.add($right),
 							paused = false,
 							intervalId = null,
@@ -768,131 +831,7 @@ function changeCoverPic() {
 
 					});
 
-			// Gallery.
-				$('.gallery')
-					.on('click', 'a', function(event) {
-
-						var $a = $(this),
-							$gallery = $a.parents('.gallery'),
-							$modal = $gallery.children('.modal'),
-							$modalImg = $modal.find('img'),
-							href = $a.attr('href');
-
-						// Not an image? Bail.
-							if (!href.match(/\.(jpg|gif|png|mp4)$/))
-								return;
-
-						// Prevent default.
-							event.preventDefault();
-							event.stopPropagation();
-
-						// Locked? Bail.
-							if ($modal[0]._locked)
-								return;
-
-						// Lock.
-							$modal[0]._locked = true;
-
-						// Set src.
-							$modalImg.attr('src', href);
-
-						// Set visible.
-							$modal.addClass('visible');
-
-						// Focus.
-							$modal.focus();
-
-						// Delay.
-							setTimeout(function() {
-
-								// Unlock.
-									$modal[0]._locked = false;
-
-							}, 600);
-
-					})
-					.on('click', '.modal', function(event) {
-
-						var $modal = $(this),
-							$modalImg = $modal.find('img');
-
-						// Locked? Bail.
-							if ($modal[0]._locked)
-								return;
-
-						// Already hidden? Bail.
-							if (!$modal.hasClass('visible'))
-								return;
-
-						// Stop propagation.
-							event.stopPropagation();
-
-						// Lock.
-							$modal[0]._locked = true;
-
-						// Clear visible, loaded.
-							$modal
-								.removeClass('loaded')
-
-						// Delay.
-							setTimeout(function() {
-
-								$modal
-									.removeClass('visible')
-
-								// Pause scroll zone.
-									$wrapper.triggerHandler('---pauseScrollZone');
-
-								setTimeout(function() {
-
-									// Clear src.
-										$modalImg.attr('src', '');
-
-									// Unlock.
-										$modal[0]._locked = false;
-
-									// Focus.
-										$body.focus();
-
-								}, 475);
-
-							}, 125);
-
-					})
-					.on('keypress', '.modal', function(event) {
-
-						var $modal = $(this);
-
-						// Escape? Hide modal.
-							if (event.keyCode == 27)
-								$modal.trigger('click');
-
-					})
-					.on('mouseup mousedown mousemove', '.modal', function(event) {
-
-						// Stop propagation.
-							event.stopPropagation();
-
-					})
-					.prepend('<div class="modal" tabIndex="-1"><div class="inner"><img src="" /></div></div>')
-						.find('img')
-							.on('load', function(event) {
-
-								var $modalImg = $(this),
-									$modal = $modalImg.parents('.modal');
-
-								setTimeout(function() {
-
-									// No longer visible? Bail.
-										if (!$modal.hasClass('visible'))
-											return;
-
-									// Set loaded.
-										$modal.addClass('loaded');
-
-								}, 275);
-
-							});
+			
 
 		// Emoji Moblie Popup
 			$('#emoji-mobile-popup').click(function (e) { 

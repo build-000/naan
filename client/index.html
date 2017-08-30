@@ -27,10 +27,10 @@
 										<a href="">Game</a>
 									</nav>
 									<div id="player-pc">
-										<h2>Shpe of you</h2>
-										<h3>Ed sheeran</h3>
+										<h2 id="music-title">-</h2>
+										<h3 id="music-author">-</h3>
 										<div id="cover-img">
-											<img src="images/demo.png" />
+											<img class="myImage" src="images/demo.png" />
 										</div>
 										<ul class="actions">
 											<span class="naan-icon naan-iconbtn_backward btnPrev"></span>
@@ -42,11 +42,14 @@
 										<h2>Sokcho</h2>
 										<h3>34°</h3>
 										<div id="cover-img">
-											<img id="myImage" src="images/demo.png" />
+											<img class="myImage" src="images/demo.png" />
 										</div>
 										<h2>SUMMER FRIENDS</h2>
 										<h3>CALVIN HARRIS</h3>
-										<ul class="actions">
+									<ul class="actions" style="
+    margin-left: 1rem;
+    margin-top: 2.5rem;
+">
 											<li><a href="">List</a></li>
 											<span class="naan-icon naan-iconbtn_backward btnPrev"></span>
 											<span class="naan-icon naan-iconbtn_play btnPlay"></span>
@@ -60,61 +63,61 @@
 										<div class="group span-3">
 											<div id="naan-weather-info">
 											<!-- 	<a class="naan-icon color1 circle icon fa-cloud"></a> -->
-											<span class="naan-icon naan-iconicn_cool"></span>
-												<h1>24c</h1>
+											<span id="naan-w-info" class="naan-icon"></span>
+												<h1>- c</h1>
 											</div>
 											<div id="naan-emoji-select">
 												<h4>어떤 감정이신가요?</h4>
 												<div class="emoji">
-												  <a target="_blank">
+												  <a class="happy">
 												    <img src="images/emoji/1.gif" alt="Trolltunga Norway" width="300">
-												    <div class="desc">좋음</div>
+												    <div class="desc">기쁨</div>
 												  </a>
 												</div>
 
 												<div class="emoji">
 												  <a target="_blank">
 												    <img src="images/emoji/2.gif" alt="Forest" width="600">
-												    <div class="desc">좋음</div>
+												    <div class="desc">환상적</div>
 												  </a>
 												</div>
 
 												<div class="emoji">
-												  <a target="_blank">
+												  <a class="angry">
 												    <img src="images/emoji/3.gif" alt="Northern Lights" width="600">
-												    <div class="desc">좋음</div>
-												  </a>
-												</div>
-
-												<div class="emoji">
-												  <a target="_blank">
-												    <img src="images/emoji/4.gif" alt="Mountains" width="600">
 												    <div class="desc">화남</div>
 												  </a>
 												</div>
+
 												<div class="emoji">
-												  <a target="_blank">
+												  <a class="relaxed">
+												    <img src="images/emoji/4.gif" alt="Mountains" width="600">
+												    <div class="desc">졸림</div>
+												  </a>
+												</div>
+												<div class="emoji">
+												  <a class="sad">
 												    <img src="images/emoji/5.gif" alt="Mountains" width="600">
-												    <div class="desc">무서움</div>
+												    <div class="desc">슬픔</div>
 												  </a>
 												</div>
 												<div class="emoji">
 												  <a target="_blank">
 												    <img src="images/emoji/6.gif" alt="Mountains" width="600">
-												    <div class="desc">환상적인</div>
+												    <div class="desc">우울함</div>
 												  </a>
 												</div>
 
 												<div class="emoji">
 												  <a target="_blank">
 												    <img src="images/emoji/7.gif" alt="Mountains" width="600">
-												    <div class="desc">졸림</div>
+												    <div class="desc">놀람</div>
 												  </a>
 												</div>
 												<div class="emoji">
 												  <a target="_blank">
 												    <img src="images/emoji/8.gif" alt="Mountains" width="600">
-												    <div class="desc">놀람</div>
+												    <div class="desc">무서움</div>
 												  </a>
 												</div>
 												<div class="emoji">
@@ -137,53 +140,53 @@
 						  <a target="_blank">
 						    <img src="images/emoji/1.gif" alt="Trolltunga Norway" width="300">
 						  </a>
-						  <div class="desc">좋음</div>
+						  <div class="desc">기쁨</div>
 						</div>
 
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/2.gif" alt="Forest" width="600">
 						  </a>
-						  <div class="desc">좋음</div>
+						  <div class="desc">환상적</div>
 						</div>
 
 						<div class="emoji">
-						  <a target="_blank">
+						  <a class="angry">
 						    <img src="images/emoji/3.gif" alt="Northern Lights" width="600">
 						  </a>
-						  <div class="desc">좋음</div>
+						  <div class="desc">화남</div>
 						</div>
 
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/4.gif" alt="Mountains" width="600">
 						  </a>
-						  <div class="desc">화남</div>
+						  <div class="desc">졸림</div>
 						</div>
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/5.gif" alt="Mountains" width="600">
 						  </a>
-						  <div class="desc">무서움</div>
+						  <div class="desc">슬픔</div>
 						</div>
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/6.gif" alt="Mountains" width="600">
 						  </a>
-						  <div class="desc">환상적인</div>
+						  <div class="desc">우울함</div>
 						</div>
 
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/7.gif" alt="Mountains" width="600">
 						  </a>
-						  <div class="desc">졸림</div>
+						  <div class="desc">놀람</div>
 						</div>
 						<div class="emoji">
 						  <a target="_blank">
 						    <img src="images/emoji/8.gif" alt="Mountains" width="600">
 						  </a>
-						  <div class="desc">놀람</div>
+						  <div class="desc">무서움</div>
 						</div>
 						<div class="emoji">
 						  <a target="_blank">
