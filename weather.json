@@ -4,6 +4,7 @@
 		"lon": 144.96,
 		"lat": -37.81
 	},
-	"weather_description": "Rain",
+	"weather_description": "Clouds",
+	"temperature": 10.660000000000025,
 	"temp_description": "cool"
 }
