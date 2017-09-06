@@ -1,3 +1,8 @@
+dst
+dst.zip
+
+.env
+
 # Logs
 logs
 *.log
@@ -14,6 +19,9 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
+# nyc test coverage
+.nyc_output
+
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
@@ -23,8 +31,9 @@ coverage
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directory
+# Dependency directories
 node_modules
+jspm_packages
 
 # Optional npm cache directory
 .npm
@@ -32,49 +41,4 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Jetbrains IDE Configurations
-.idea
-
-# sass-cache
-.sass-cache
-
-# OSX
-.DS_Store
-
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-certifi/
-certifi-2017.7.27.1.dist-info/
-chardet/
-chardet-3.0.4.dist-info/
-idna/
-idna-2.6.dist-info/
-requests/
-requests-2.18.4.dist-info/
-urllib3/
-urllib3-1.22.dist-info/
-
-# Serverless directories
 .serverless
-
-.idea/*
-.vscode/*
-__pycache__/*
-
-# System
-.DS_Store

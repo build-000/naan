@@ -1,0 +1,25 @@
+service: nareum
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  region: ap-northeast-2
+  runtime: nodejs6.10
+  environment: ${file(./env/${opt:stage}.yml)}
+
+functions:
+  mockSuggest:
+    handler: handlers.mockApi
+    events:
+      - http:
+          path: tracks
+          method: get
+  suggest:
+    handler: handlers.suggest
+    timeout: 30
+    events:
+      - http:
+          path: tracks/suggestions
+          method: get

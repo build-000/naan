@@ -1,0 +1,147 @@
+/* Panel (Banner) */
+
+	$pad: _size(pad);
+	$pad-small-tb: _size(pad-small-tb);
+	$pad-small-lr: _size(pad-small-lr);
+
+	.panel.banner {
+		@include vendor('align-items', 'stretch');
+
+		.content {
+			padding: 1.3rem 3.5rem 2rem 3.5rem;
+			@include vendor('display', 'flex');
+			@include vendor('flex-direction', 'column');
+			@include vendor('flex-grow', '0');
+			@include vendor('flex-shrink', '0');
+
+			> .actions:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.image {
+			@include vendor('flex-grow', '0');
+			@include vendor('flex-shrink', '0');
+			position: relative;
+
+			img {
+				@include vendor('object-fit', 'cover');
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		.naan-left {
+			width: 26%;
+			.gallery {
+				width: 100%;
+			}
+			&:after {
+				@include vendor('pointer-events', 'none');
+			}
+		}
+
+		.naan-right {
+			width: 74%;
+			text-align: center;
+			h2 {
+				font-weight: 400;
+			}
+			h3 {
+				font-weight: 300;
+			}
+			nav {
+				.left {
+					position: absolute;
+					left: 2rem;
+					font-size: 2rem;
+				}
+				.right {
+					position: absolute;
+					right: 2rem;
+				}
+			}
+		}
+
+		#cover-img {
+			width: 100%;
+			margin-top: 1rem;
+			img {
+				width: 328px;
+				height: 328px;
+				background: white;
+				border-radius: 50%;
+			}
+		}
+
+		&.left {
+			@include vendor('flex-direction', 'row');
+		}
+
+		&.right {
+			@include vendor('flex-direction', 'row-reverse');
+			width: 100%;
+		}
+	}
+
+	@include breakpoint(small) {
+		.panel.banner {
+			.content {
+				@include padding($pad-small-tb, $pad-small-lr);
+				@include vendor('flex-basis', '60%');
+
+				> .actions:last-child {
+					margin-bottom: _size(element-margin);
+				}
+			}
+
+			.image {
+				@include vendor('flex-basis', '40%');
+			}
+			.naan-left {
+				@include vendor('flex-basis', '40%');
+			}
+			#cover-img {
+				img {
+					width: 247px;
+					height: 247px;
+				}
+			}
+		}
+
+		@include orientation(portrait) {
+			.panel.banner {
+				.content {
+					@include vendor('flex-basis', 'auto');
+					height: 100vh;
+				}
+
+				.image {
+					@include vendor('flex-basis', 'auto');
+					height: 18rem;
+					display: none;
+				}
+				.naan-left {
+					@include vendor('flex-basis', 'auto');
+					height: 18rem;
+					display: none;
+				}
+
+				.naan-right {
+					width: 100%;
+				}
+
+				&.left {
+					@include vendor('flex-direction', 'column');
+				}
+
+				&.right {
+					@include vendor('flex-direction', 'column-reverse');
+				}
+			}
+		}
+	}
