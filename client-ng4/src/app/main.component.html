@@ -2,26 +2,30 @@
 
 <div class="container" *ngIf="weather">
 	<div class="row">
-		<div class="3u 4u(medium) naan-content">
+		<div class="3u 4u$(medium) naan-content">
 			<div class="naan-weather">
-				<div id="weather">
-					<span class="naan-icon naan-iconicn_{{weather.keyword}}"></span>
-				</div>
-				<div id="temperature">
-					<span> {{weather.temperature}} c</span>
+				<div class="weather-container">
+					<div id="weather">
+						<span class="naan-icon naan-iconicn_{{weather.keyword}}"></span>
+					</div>
+					<div id="temperature">
+						<span> {{weather.temperature}} c</span>
+					</div>
 				</div>
 			</div>
 			<div class="naan-emoji">
-				<div class="emoji-header">
-					<span>어떤 감정이신가요?</span>
-				</div>
 				<div class="emoji-container">
-					<div class="row">
-						<div class="emoji-content 4u" *ngFor="let emoji of emojis">
-							<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
-							<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
-							<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
-							<div class="emoji-text">{{emoji.describe}}</div>
+					<div class="emoji-header">
+						<span>어떤 감정이신가요?</span>
+					</div>
+					<div class="emoji-wrapper">
+						<div class="row">
+							<div class="emoji-content 4u" *ngFor="let emoji of emojis">
+								<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
+								<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
+								<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
+								<div class="emoji-text">{{emoji.describe}}</div>
+							</div>
 						</div>
 					</div>
 				</div>
