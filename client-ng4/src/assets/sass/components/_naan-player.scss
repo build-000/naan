@@ -34,3 +34,8 @@
 	@include vendor("transform", "translate(-50%, -50%)");
 	text-align: center;
 }
+@include breakpoint(xsmall) {
+	.row {
+		margin-left: 0px;
+	}
+}
