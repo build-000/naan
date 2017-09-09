@@ -1,47 +1,62 @@
 .naan-content {
 	display: block;
 	.naan-weather {
-		height: 43vh;
+		height: 35vh;
 		text-align: center;
 		position: relative;
 	}
 	.naan-emoji {
 		background: _palette(fg);
-		height: 57vh;
+		height: 65vh;
 		text-align: center;
 		position: relative;
 	}
-	.emoji-content {
-		img {
-			width: 100%;
-		}
-		.click-x {
-			cursor: not-allowed;
-		}
-	}
-	.emoji-container {
-		background: _palette(fg);
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		text-align: center;
-		width: 100%;
-	}
-	@include breakpoint(xsmall) {
-		display: none;
-	}
 }
-
 #weather {
 	@include fontsize(alpha, all);
+	.naan-icon {
+		font-size: 300%;
+	}
 }
 .weather-container {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	width: 100%;
 }
 #temperature {
 	@include fontsize(alpha, all);
+}
+
+.emoji-content {
+	img {
+		width: 100%;
+	}
+	.click-x {
+		cursor: not-allowed;
+	}
+}
+.emoji-container {
+	background: _palette(fg);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	width: 100%;
+	padding: 1.5vmax;
+}
+.emoji-wrapper {
+	margin-top: 1rem;
+}
+@include breakpoint(large) {
+	.emoji-container {
+		padding: 3vmax;
+	}
+}
+@include breakpoint(xsmall) {
+	.naan-content {
+		display: none;
+	}
 }
