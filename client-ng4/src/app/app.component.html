@@ -37,8 +37,8 @@
 			</div>
 			<div class="player-container">
 				<div *ngIf="track" class="player-header">
-					<h2>{{track.title}}</h2>
-					<h3>{{track.author}}</h3>
+					<h2 class="track-title">{{track.title}}</h2>
+					<h3 class="track-author">{{track.author}}</h3>
 				</div>
 				<article class="player-cover">
 					<img *ngIf="!selectedEmoji" src="/src/images/profile.png"/>

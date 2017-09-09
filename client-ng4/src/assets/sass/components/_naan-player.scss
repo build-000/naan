@@ -14,6 +14,15 @@
 		}
 	}
 }
+.player-header {
+	.track-title {
+		@include fontsize(gamma, all);
+	}
+	.track-author {
+		@include fontsize(delta, all);
+		margin: 2rem;
+	}
+}
 .naan-player {
 	background: _palette(bg);
 	height: 100vh;
@@ -33,6 +42,14 @@
 	left: 50%;
 	@include vendor("transform", "translate(-50%, -50%)");
 	text-align: center;
+	width: 100%;
+}
+.player-control {
+	@include fontsize(alpha, all);
+	margin-top: 2rem;
+	.naan-icon {
+		font-size: 140%;
+	}
 }
 @include breakpoint(xsmall) {
 	.row {
