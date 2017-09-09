@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import '../assets/sass/main.scss';
-
 @Component({
   selector: 'my-app',
   template:
