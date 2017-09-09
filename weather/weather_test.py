@@ -1,5 +1,5 @@
-from weather import WeatherInfo
 import json
+from weather import WeatherInfo
 
 sample_data = '{"latitude":-37.814,"longitude":144.96332}'
 parsed = json.loads(sample_data)

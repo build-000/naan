@@ -75,3 +75,6 @@ urllib3-1.22.dist-info/
 .idea/*
 .vscode/*
 __pycache__/*
+
+# System
+.DS_Store

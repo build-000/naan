@@ -34,6 +34,7 @@ class WeatherInfo:
             'location': json_format['name'],
             'coord': json_format['coord'],
             'weather_description': weather_main,
+            'temperature': temperature,
             'temp_description': temp_description
         }
         return parsed
