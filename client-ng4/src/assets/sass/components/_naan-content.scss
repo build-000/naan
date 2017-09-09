@@ -27,6 +27,7 @@
 }
 #temperature {
 	@include fontsize(alpha, all);
+	margin-top: 1.5rem;
 }
 
 .emoji-content {
