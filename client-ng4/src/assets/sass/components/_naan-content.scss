@@ -1,0 +1,23 @@
+.naan-content {
+	display: block;
+	.naan-weather {
+		height: 43vh;
+		text-align: center;
+	}
+	.naan-emoji {
+		height: 57vh;
+		background: _palette(fg);
+		padding: 2rem;
+	}
+	.emoji-content {
+		img {
+			width: 100%;
+		}
+		.click-x {
+			cursor: not-allowed;
+		}
+	}
+	@include breakpoint(small) {
+		display: none;
+	}
+}

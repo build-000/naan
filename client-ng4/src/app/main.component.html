@@ -1,82 +1,70 @@
 
+
 <div class="container" *ngIf="weather">
+	<div class="row">
+		<div class="3u 4u(medium) naan-content">
+			<div class="naan-weather">
+				<div id="weather">
+					<span class="naan-icon naan-iconicn_{{weather.keyword}}"></span>
+				</div>
+				<div id="temperature">
+					<span> {{weather.temperature}} c</span>
+				</div>
+			</div>
+			<div class="naan-emoji">
+				<div class="emoji-header">
+					<span>어떤 감정이신가요?</span>
+				</div>
+				<div class="emoji-container">
+					<div class="row">
+						<div class="emoji-content 4u" *ngFor="let emoji of emojis">
+							<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
+							<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
+							<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
+							<div class="emoji-text">{{emoji.describe}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-  <div class="naan-content">
-
-    <div class="content-nav">
-      <img src="/src/images/favicons/mstile-150x150.png"/>
-    </div>
-
-    <div class="naan-weather" >
-      <div id="temperature">
-        <span> {{weather.temperature}} c</span>
-      </div>
-      <div id="weather">
-        <span class="naan-icon naan-iconicn_{{weather.keyword}}"></span>
-      </div>
-    </div>
-
-
-    <div class="naan-emoji">
-      <div class="emoji-header">
-        <span>How do you feel now?</span>
-      </div>
-      <div class="emoji-container">
-        <div class="emoji-content" *ngFor="let emoji of emojis">
-          <img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
-          <img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
-          <img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
-          <div class="emoji-text">{{emoji.describe}}</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="naan-player">
-
-    <div class="player-nav">
-      <span class="naan-icon naan-iconbtn_more click-o" style="float:left;margin-left:10px;margin-top:10px;font-size:3rem"></span>
-      <span class="naan-icon naan-iconbtn_list click-o" style="float:right;margin-right:10px;margin-top:10px;font-size:1rem"></span>
-    </div>
-
-    <div *ngIf="track" class="player-header">
-      <h2>{{track.title}}</h2>
-      <h3>{{track.author}}</h3>
-    </div>
-
-
-    <div>
-      <article class="player-cover">
-        <img *ngIf="!selectedEmoji" src="/src/images/profile.png"/>
-        <img *ngIf="selectedEmoji" src="/src/images/weather/{{weather.keyword}}-{{selectedEmoji}}.jpg" />
-      </article>
-    </div>
-    <div *ngIf="selectedEmoji" class="player-control">
-      <span id="btnPrev" class="naan-icon naan-iconbtn_backward naan-player click-o" (click)="onClickPrevBtn(); $event.stopPropagation()"></span>
-      <span id="btnPlay" *ngIf="!playFlag" class="naan-icon naan-iconbtn_play naan-player click-o" (click)="onClickPlayBtn(); $event.stopPropagation()"></span>
-      <span id="btnPause" *ngIf="playFlag" class="naan-icon naan-iconbtn_pause naan-player click-o" (click)="onClickPauseBtn(); $event.stopPropagation()"></span>
-      <span id="btnNext" class="naan-icon naan-iconbtn_forward naan-player click-o" (click)="onClickNextbtn(); $event.stopPropagation()"></span>
-    </div>
-
-  </div>
-
-  <div *ngIf="selectedEmoji" class="naan-tracks">
-    <div class="header">
-      <h2>Now </h2>
-      <h2>playing list </h2>
-    </div>
-    <div class="track-list">
-      <div *ngFor="let track of tracks;let i=index;">
-        <div>
-          <img class="track-thumb" height="50px;" src={{track.artwork_url}}/>
-        </div>
-        <div>
-          <span>{{track.title}}</span>
-          <span>{{track.author}}</span>
-        </div>
-    </div>
-  </div>
-
+		<div class="9u 8u(medium) 12u$(small) naan-player">
+			<div class="player-nav">
+				<span class="naan-icon naan-iconbtn_more click-o" style="float:left;margin-left:10px;margin-top:10px;font-size:3rem"></span>
+				<span class="naan-icon naan-iconbtn_list click-o" style="float:right;margin-right:10px;margin-top:10px;font-size:1rem"></span>
+			</div>
+			<div class="player-container">
+				<div *ngIf="track" class="player-header">
+					<h2>{{track.title}}</h2>
+					<h3>{{track.author}}</h3>
+				</div>
+				<article class="player-cover">
+					<img *ngIf="!selectedEmoji" src="/src/images/profile.png"/>
+					<img *ngIf="selectedEmoji" src="/src/images/weather/{{weather.keyword}}-{{selectedEmoji}}.jpg" />
+				</article>
+				<div *ngIf="selectedEmoji" class="player-control">
+					<span id="btnPrev" class="naan-icon naan-iconbtn_backward naan-player click-o" (click)="onClickPrevBtn(); $event.stopPropagation()"></span>
+					<span id="btnPlay" *ngIf="!playFlag" class="naan-icon naan-iconbtn_play naan-player click-o" (click)="onClickPlayBtn(); $event.stopPropagation()"></span>
+					<span id="btnPause" *ngIf="playFlag" class="naan-icon naan-iconbtn_pause naan-player click-o" (click)="onClickPauseBtn(); $event.stopPropagation()"></span>
+					<span id="btnNext" class="naan-icon naan-iconbtn_forward naan-player click-o" (click)="onClickNextbtn(); $event.stopPropagation()"></span>
+				</div>
+			</div>
+		</div>
+	<!-- 	<div *ngIf="selectedEmoji" class="naan-tracks">
+			<div class="header">
+				<h2>Now </h2>
+				<h2>playing list </h2>
+			</div>
+			<div class="track-list">
+				<div *ngFor="let track of tracks;let i=index;">
+					<div>
+						<img class="track-thumb" height="50px;" src={{track.artwork_url}}/>
+					</div>
+					<div>
+						<span>{{track.title}}</span>
+						<span>{{track.author}}</span>
+					</div>
+			</div>
+		</div> -->
+	</div>
 </div>
