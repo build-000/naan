@@ -14,7 +14,7 @@ export class TrackService {
   tracks : Track[] = [];
   track : Track
   /*stream_url = list[i].track.stream_url + '?client_id=' + client_id;*/
-  private headers = new Headers({'Content-Type': 'application/json'});
+  // private headers = new Headers({'Content-Type': 'application/json'});
   private trackUrl = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions';
   private cliend_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
   private player : any;

@@ -1,8 +1,25 @@
+.player-nav {
+	.naan-icon {
+		&:nth-of-type(1) {
+			float:left;
+			margin-left:20px;
+			margin-top:20px;
+			font-size:2rem;
+		}
+		&:nth-of-type(2) {
+			float:right;
+			margin-right:20px;
+			margin-top:20px;
+			font-size:2rem;
+		}
+	}
+}
 .naan-player {
 	background: _palette(bg);
 	height: 100vh;
 	text-align: center;
 	position: relative;
+	padding-left: 0;
 }
 .player-cover {
 	img {
