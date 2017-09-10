@@ -133,16 +133,16 @@ export class AppComponent {
 	}
 	set_mobile_pop() {
 		// Emoji Moblie Popup
-			$('#emoji-mobile-popup').click(function (e) { 
+			$('#emoji-mobile-popup').click(function (e: any) { 
 				show_emoji_mobile(e);
 			});
 
-			$(document).mouseup(function(e) {
+			$(document).mouseup(function(e: any) {
 				var container = $(".naan-emoji");
 				if (!container.is(e.target) && container.has(e.target).length === 0) 
 					close_emoji_mobile();
 			});
-			function show_emoji_mobile(e) {
+			function show_emoji_mobile(e: any) {
 				console.log('show!');
 				$('.naan-emoji').addClass('loaded');
 				$('.overlay').removeClass('blur-out');
