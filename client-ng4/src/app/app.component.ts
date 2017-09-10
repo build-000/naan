@@ -136,9 +136,8 @@ export class AppComponent {
 			$('#emoji-mobile-popup').click(function (e: any) { 
 				show_emoji_mobile(e);
 			});
-
-			$(document).mouseup(function(e: any) {
-				var container = $(".naan-emoji");
+			$(document).bind( "mouseup touchend", function(e: any) {
+				var container = $(".emoji-wrapper");
 				if (!container.is(e.target) && container.has(e.target).length === 0) 
 					close_emoji_mobile();
 			});
