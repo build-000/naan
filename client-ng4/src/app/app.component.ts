@@ -142,7 +142,6 @@ export class AppComponent {
 					close_emoji_mobile();
 			});
 			function show_emoji_mobile(e: any) {
-				console.log('show!');
 				$('.naan-emoji').addClass('loaded');
 				$('.overlay').removeClass('blur-out');
 				$('.overlay').addClass('blur-in');
