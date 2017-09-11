@@ -13,49 +13,55 @@ import 'rxjs/add/operator/toPromise';
 export class TrackService {
   tracks : Track[] = [];
   track : Track
-  /*stream_url = list[i].track.stream_url + '?client_id=' + client_id;*/
-  // private headers = new Headers({'Content-Type': 'application/json'});
   private trackUrl = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions';
   private cliend_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
   private player : any;
   private firstExcution = false;
+  private playFlag = false;
 
   constructor(private http: HttpClient){}
 
 
   soundcloudInit():any{
     this.firstExcution = true;
-    SC.initialize({client_id : this.cliend_id})
+    SC.initialize({client_id : this.cliend_id});
   }
-  getTrackInfo():Track{
-    return this.track;
+  playEvent():void{
+    this.player.on('play',()=>{
+      console.log('playing...');
+    });
+    this.player.on('finish', ()=>{
+    });
   }
-
-  playTrack(trackIndex:number):Promise<Track>{
+  nextTrack(trackIndex:number):Promise<Track>{
+    this.pauseTrack();
+    return new Promise((resolve,reject)=>{
+      resolve(this.getTrack(trackIndex))
+    })
+  }
+  getTrack(trackIndex:number):Promise<Track>{
+    this.playFlag = false;
     return new Promise((resolve, reject)=>{
       SC.stream(`/tracks/${this.tracks[trackIndex].id}`).then((player:any)=>{
-        player.play();
         this.track = this.tracks[trackIndex]
         this.player = player;
+        this.playTrack(trackIndex)
         resolve(this.track);
       })
     }).catch(err=>{
       console.log('Error : ' + err)
     })
   }
-  nextTrack(trackIndex:number):void{
-    this.pauseTrack(); 
-    this.playTrack(trackIndex)
-  }
-
   pauseTrack():void{
     this.player.pause();
   }
-  rePlayTrack():void{
+  playTrack(trackIndex:number):void{
+    if (this.playFlag == false){
+      this.playFlag = true;
+      this.playEvent();
+    }
     this.player.play();
   }
-
-
   getTracks(mood: string, weather : string): Promise<Track[]> {
     let url = `${this.trackUrl}?mood=${mood}&weather=${weather}`;
       return new Promise((resolve,reject)=>{
@@ -77,7 +83,6 @@ export class TrackService {
               }else{
                 this.pauseTrack();
               }
-
               resolve(this.tracks);
             },
             err => {

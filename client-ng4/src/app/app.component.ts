@@ -38,10 +38,6 @@ export class AppComponent {
 		private trackService : TrackService
 	){}
 
-	getTrack():void{
-		this.track = this.trackService.getTrackInfo();
-	}
-
 	onClickNextbtn():void{
 		if (this.tracks.length>0){
 			if (this.trackIndex == this.tracks.length-1){
@@ -49,9 +45,14 @@ export class AppComponent {
 			}else{
 				this.trackIndex++;
 			}
-			this.trackService.nextTrack(this.trackIndex);
-			this.getTrack();
-			this.playFlag = true;
+			this.trackService.nextTrack(this.trackIndex).then(
+				track => {
+					//this.getTrack();
+					this.track = track;
+					this.playFlag = true;
+				}
+			);
+
 		}
 	}
 
@@ -62,9 +63,14 @@ export class AppComponent {
 			}else{
 				this.trackIndex--
 			}
-			this.trackService.nextTrack(this.trackIndex);
-			this.getTrack();
-			this.playFlag = true;
+			this.trackService.nextTrack(this.trackIndex).then(
+				track => {
+					//this.getTrack();
+					this.track = track;
+					this.playFlag = true;
+				}
+			)
+
 		}
 	}
 
@@ -77,7 +83,7 @@ export class AppComponent {
 
 	onClickPlayBtn():void{
 		if (this.tracks.length>0){
-			this.trackService.rePlayTrack();
+			this.trackService.playTrack(this.trackIndex);
 			this.playFlag = true;
 		}
 	}
@@ -87,8 +93,6 @@ export class AppComponent {
 			return;
 		}
 		this.variableDataClear();
-		console.log(mood);
-		console.log(this.weather.keyword);
 		this.close_emoji_mobile();
 		this.track.title = 'loading...';
 		this.trackService.getTracks(mood, this.weather.keyword)
@@ -97,11 +101,11 @@ export class AppComponent {
 				this.selectedEmoji = mood;
 				this.tracks = data;
 				if (this.playFlag == false){
-					this.trackService.playTrack(0).then(player =>{
+					this.trackService.getTrack(0).then(track =>{
 						this.trackIndex = 0;
 						this.playFlag = true;
 						this.firstExcution = true;
-						this.track = this.trackService.getTrackInfo();
+						this.track = track;
 					});
 				}
 			},
@@ -112,18 +116,22 @@ export class AppComponent {
 	}
 	variableDataClear(): void{
 		this.firstExcution = false;
-		this.playFlag = false;
+		if (this.playFlag == true){
+			this.trackService.pauseTrack();
+			this.playFlag = false;
+		}
 		this.tracks =[];
 		this.track = new Track;
 		this.selectedEmoji = '';
 	}
+
 
 	ngOnInit() {
 		this.weatherService.getWeatherData()
 		.then(weather => {
 			this.weather = weather;
 			this.emojiService.getEmojis()
-				.then(emojis => { 
+				.then(emojis => {
 					this.emojis = emojis.slice(0,9);
 					this.set_mobile_pop(); })
 
@@ -133,12 +141,12 @@ export class AppComponent {
 	}
 	set_mobile_pop() {
 		// Emoji Moblie Popup
-			$('#emoji-mobile-popup').click(function (e: any) { 
+			$('#emoji-mobile-popup').click(function (e: any) {
 				show_emoji_mobile(e);
 			});
 			$(document).bind( "mouseup touchend", function(e: any) {
 				var container = $(".emoji-wrapper");
-				if (!container.is(e.target) && container.has(e.target).length === 0) 
+				if (!container.is(e.target) && container.has(e.target).length === 0)
 					close_emoji_mobile();
 			});
 			function show_emoji_mobile(e: any) {
