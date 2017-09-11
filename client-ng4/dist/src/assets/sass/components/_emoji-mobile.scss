@@ -1,0 +1,69 @@
+/**
+ *	Popup
+ */
+@include breakpoint(xsmall) {
+	.naan-content .naan-emoji {
+		@include vendor('transition', (
+			'opacity #{_duration(cal_y)} ease',
+			'transform #{_duration(cal_y)} ease-in-out',
+		));
+		position: fixed;
+		background: white;
+		width: 50%;
+		z-index: 9999;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		top: 90%; right: 0; bottom: 0; left: 0;
+		margin: 0 auto;
+		@include vendor('transform', 'translateY(10em)');
+		opacity: 0;
+		width: 94%;
+		padding-top: 5rem;
+		.emoji-container {
+			border-radius: 6px;
+		}
+	}
+}
+.naan-emoji.loaded {
+	display: initial;
+	@include vendor('transition', (
+		'opacity #{_duration(cal_y)} ease',
+		'transform #{_duration(cal_y)} ease-in-out',
+	));
+	@include vendor('transform', 'translateY(-90%)');
+	opacity: 1;
+	padding: 0;
+}
+
+.blur-in {
+	-webkit-animation: blur #{_duration(cal_blur)} forwards;
+	-moz-animation: blur #{_duration(cal_blur)} forwards;
+	-o-animation: blur #{_duration(cal_blur)} forwards;
+	animation: blur #{_duration(cal_blur)} forwards;
+}
+
+.blur-out {
+	-webkit-animation: blur-out #{_duration(cal_blur)} forwards;
+	-moz-animation: blur-out #{_duration(cal_blur)} forwards;
+	-o-animation: blur-out #{_duration(cal_blur)} forwards;
+	animation: blur-out #{_duration(cal_blur)} forwards;
+}
+
+@-webkit-keyframes blur {
+	0% {
+		-webkit-filter: blur(0px);
+		-moz-filter: blur(0px);
+		-o-filter: blur(0px);
+		-ms-filter: blur(0px);
+		filter: blur(0px);
+	}
+
+	100% {
+		-webkit-filter: blur(4px);
+		-moz-filter: blur(4px);
+		-o-filter: blur(4px);
+		-ms-filter: blur(4px);
+		filter: blur(4px);
+	}
+}
