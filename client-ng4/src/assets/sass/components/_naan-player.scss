@@ -24,6 +24,7 @@
 	.track-author {
 		@include fontsize(delta, all);
 		margin: 2rem;
+		color: _palette(fg-bold);
 	}
 }
 .naan-player {
@@ -34,9 +35,21 @@
 	padding-left: 0;
 }
 .player-cover {
+	background: linear-gradient(to right, rgba(63, 193, 255, 0.0), #C3D644 36%, #C3D644 56%, rgba(63, 193, 255, 0.0));
+	min-width: 800px;
+	min-height: 300px;
+	-webkit-mask-image: url('/src/images/liquid_bg.png');
+	-webkit-mask-position: center center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	position: relative;
 	img {
-		width: 20rem;
+		width: 220px;
 		border-radius: 10rem;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include vendor("transform", "translate(-50%, -50%)");
 	}
 }
 .player-container {
@@ -52,6 +65,10 @@
 	margin-top: 2rem;
 	.naan-icon {
 		font-size: 140%;
+		&:nth-of-type(2),
+		&:nth-of-type(3) {
+			padding-left: 5rem;
+		}
 	}
 }
 @include breakpoint(xsmall) {

@@ -16,8 +16,10 @@ export class WeatherService {
         this.http.get(url).subscribe(
           data => {
             this.weather  = {
-              temperature : parseFloat(data['temperature']).toFixed(2),
-              keyword : data['temp_description']
+              temperature : parseFloat(data['temperature']).toFixed(0),
+              keyword : data['temp_description'],
+              israin : data['weather_description'],
+              location : data['location']
             }
             console.log(this.weather)
             resolve(this.weather);

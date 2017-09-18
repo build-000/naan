@@ -73,7 +73,7 @@ export class TrackService {
                   id : list[i].id,
                   title : list[i].track.title,
                   duration : list[i].track.duration,
-                  artwork_url : list[i].track.artwork_url,
+                  artwork_url : this.changeArtworkUrl(list[i].track.artwork_url),
                   author : list[i].track.user.username
                 }
                 this.tracks.push(track);
@@ -92,5 +92,9 @@ export class TrackService {
           );
       }
     )
+  }
+  changeArtworkUrl(url : string) {
+    if (url != null) var res = url.replace("-large.jpg", "-t500x500.jpg");
+    return res;
   }
 }

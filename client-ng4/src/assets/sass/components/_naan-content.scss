@@ -4,6 +4,7 @@
 		height: 35vh;
 		text-align: center;
 		position: relative;
+		background: _palette(fg);
 	}
 	.naan-emoji {
 		background: _palette(fg);
@@ -12,25 +13,39 @@
 		position: relative;
 	}
 }
-#weather {
-	@include fontsize(alpha, all);
+#weather-comments {
+	margin-left: 20px;
+	text-align: left;
 	.naan-icon {
-		font-size: 300%;
+		@include fontsize(alpha, all);
+	}
+	p {
+		@include fontsize(eta, all);
+		color: _palette(fg-bold);
 	}
 }
-.weather-container {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	@include vendor("transform", "translate(-50%, -50%)");
+#weather-details {
+	@include fontsize(zeta, all);
 	width: 100%;
-}
-#temperature {
-	@include fontsize(alpha, all);
-	margin-top: 1.5rem;
+	height: 100px;
+	.location {
+		float: left;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+	.temperature {
+		float: right;
+		display: inline-block;
+		margin-right: 20px;
+		margin-top: 20px;
+		img {
+			@include widthsize(zeta, all);
+		}
+	}
 }
 
 .emoji-content {
+	// margin-top: 10px;
 	img {
 		width: 100%;
 	}
@@ -50,6 +65,12 @@
 }
 .emoji-wrapper {
 	margin-top: 1rem;
+	padding: 2vmax;
+}
+.emoji-header {
+	@include fontsize(eta, all);
+	color: _palette(fg-bold);
+	text-align: left;
 }
 @include breakpoint(large) {
 	.emoji-container {

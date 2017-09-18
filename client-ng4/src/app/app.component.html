@@ -1,20 +1,26 @@
 <div class="container" *ngIf="weather">
 	<div class="row">
-		<div class="3u 5u(large) naan-content">
+		<div class="4u 5u(large) naan-content">
 			<div class="naan-weather">
 				<div class="weather-container">
-					<div id="weather">
-						<span class="naan-icon naan-iconicn_{{weather.keyword}}"></span>
+					<div id="weather-details">
+						<span class="location">{{weather.location}}</span>
+						<div class="temperature">
+							<img src="/src/images/weather/{{weather.keyword}}.png">
+							<span>{{weather.temperature}} °C</span>
+						</div>
 					</div>
-					<div id="temperature">
-						<span> {{weather.temperature}} °C</span>
+					<div id="weather-comments">
+						<span class="naan-icon naan-iconcircles-dash"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
+						<p>{{selectedEmoji}}한 Playlist를 가지고 왔어요.</p>
 					</div>
 				</div>
 			</div>
 			<div class="naan-emoji">
 				<div class="emoji-container">
 					<div class="emoji-header">
-						<span>어떤 감정이신가요?</span>
+						<p>분위기를 바꾸고 싶으시면</p>
+						<p>언제든 관련 표정을 선택해주세요!</p>
 					</div>
 					<div class="emoji-wrapper">
 						<div class="row">
@@ -22,7 +28,6 @@
 								<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
 								<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
 								<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
-								<div class="emoji-text">{{emoji.describe}}</div>
 							</div>
 						</div>
 					</div>
@@ -30,7 +35,7 @@
 			</div>
 		</div>
 
-		<div class="9u 7u(large) 12u$(xsmall) naan-player overlay">
+		<div class="8u 7u(large) 12u$(xsmall) naan-player overlay">
 			<div class="player-nav">
 				<span class="naan-icon naan-iconbtn_more click-o"></span>
 				<span class="naan-icon naan-iconbtn_list click-o"></span>
@@ -40,10 +45,11 @@
 					<h2 class="track-title">{{track.title}}</h2>
 					<h3 class="track-author">{{track.author}}</h3>
 				</div>
-				<article class="player-cover">
-					<img *ngIf="!selectedEmoji" src="/src/images/profile.png"/>
-					<img *ngIf="selectedEmoji" src="/src/images/weather/{{weather.keyword}}-{{selectedEmoji}}.jpg" />
-				</article>
+				<div class="player-cover">
+				<!-- 	<img *ngIf="!selectedEmoji" src="/src/images/profile.png"/>
+					<img *ngIf="selectedEmoji" src="/src/images/weather/{{weather.keyword}}-{{selectedEmoji}}.jpg" /> -->
+					<img *ngIf="selectedEmoji" src="{{track.artwork_url}}" />
+				</div>
 				<div *ngIf="selectedEmoji" class="player-control">
 					<span id="btnPrev" class="naan-icon naan-iconbtn_backward naan-player click-o" (click)="onClickPrevBtn(); $event.stopPropagation()"></span>
 					<span id="btnPlay" *ngIf="!playFlag" class="naan-icon naan-iconbtn_play naan-player click-o" (click)="onClickPlayBtn(); $event.stopPropagation()"></span>

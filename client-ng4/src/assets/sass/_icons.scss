@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: 'naan-icon';
-  src:  url('src/assets/fonts/naan-icon.eot?f4om86');
-  src:  url('src/assets/fonts/naan-icon.eot?f4om86#iefix') format('embedded-opentype'),
-    url('src/assets/fonts/naan-icon.ttf?f4om86') format('truetype'),
-    url('src/assets/fonts/naan-icon.woff?f4om86') format('woff'),
-    url('src/assets/fonts/naan-icon.svg?f4om86#naan-icon') format('svg');
+  src:  url('src/assets/fonts/naan-icon.eot?7sbxt8');
+  src:  url('src/assets/fonts/naan-icon.eot?7sbxt8#iefix') format('embedded-opentype'),
+    url('src/assets/fonts/naan-icon.ttf?7sbxt8') format('truetype'),
+    url('src/assets/fonts/naan-icon.woff?7sbxt8') format('woff'),
+    url('src/assets/fonts/naan-icon.svg?7sbxt8#naan-icon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -26,39 +26,50 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.naan-iconbtn_list:before {
-  content: "\e900";
-  color: #5b5b5b;
+.naan-iconequalizer_icn:before {
+  content: "\e904";
+  color: #fff;
 }
-.naan-iconbtn_more:before {
+.naan-iconcircles-dash .path1:before {
   content: "\e901";
-  color: #5b5b5b;
+  color: rgb(255, 82, 82);
 }
-.naan-iconbtn_play:before {
-  content: "\e941";
-  color: #5b5b5b;
+.naan-iconcircles-dash .path2:before {
+  content: "\e902";
+  margin-left: -1em;
+  color: rgb(255, 171, 64);
 }
-.naan-iconbtn_backward:before {
-  content: "\e93e";
-  color: #5b5b5b;
+.naan-iconcircles-dash .path3:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(64, 196, 255);
 }
-.naan-iconbtn_forward:before {
-  content: "\e93f";
-  color: #5b5b5b;
+.naan-iconrefresh-icn:before {
+  content: "\e900";
+  color: #747474;
 }
 .naan-iconbtn_pause:before {
-  content: "\e940";
-  color: #5b5b5b;
+  content: "\e907";
+  color: #747474;
 }
-.naan-iconicn_cool:before {
-  content: "\e942";
+.naan-iconbtn_play:before {
+  content: "\e908";
+  color: #747474;
 }
-.naan-iconicn_rain:before {
-  content: "\e943";
+.naan-iconbtn_list:before {
+  content: "\e909";
+  color: #747474;
 }
-.naan-iconicn_snow:before {
-  content: "\e944";
+.naan-iconbtn_backward:before {
+  content: "\e90a";
+  color: #747474;
 }
-.naan-iconicn_warm:before {
-  content: "\e945";
+.naan-iconbtn_forward:before {
+  content: "\e90b";
+  color: #747474;
 }
+.naan-iconbtn_more:before {
+  content: "\e90c";
+  color: #747474;
+}
+
