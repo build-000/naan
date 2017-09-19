@@ -164,6 +164,26 @@ export class AppComponent {
 				$('.overlay').removeClass('blur-in');
 				$('.overlay').addClass('blur-out');
 			}
+		// Track List Mobile Popup
+			$('#tracklist-mobile-popup').click(function (e: any) {
+				show_tacklist_mobile(e);
+			});
+			$(document).bind( "mouseup touchend", function(e: any) {
+				var container = $(".track-list");
+				if (!container.is(e.target) && container.has(e.target).length === 0)
+					close_tacklist_mobile();
+			});
+			function show_tacklist_mobile(e: any) {
+				$('.track-list').addClass('loaded');
+				$('.overlay').removeClass('blur-out');
+				$('.overlay').addClass('blur-in');
+				e.preventDefault();
+			}
+			function close_tacklist_mobile() {
+				$('.track-list').removeClass('loaded');
+				$('.overlay').removeClass('blur-in');
+				$('.overlay').addClass('blur-out');
+			}
 	}
 	close_emoji_mobile() {
 		$('.naan-emoji').removeClass('loaded');

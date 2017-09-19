@@ -2,29 +2,34 @@
  *	Popup
  */
 @include breakpoint(xsmall) {
-	.naan-content .naan-emoji {
-		@include vendor('transition', (
-			'opacity #{_duration(cal_y)} ease',
-			'transform #{_duration(cal_y)} ease-in-out',
-		));
-		position: fixed;
-		background: white;
-		z-index: 9999;
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		top: 90%; right: 0; bottom: 0; left: 0;
-		margin: 0 auto;
-		@include vendor('transform', 'translateY(10em)');
-		opacity: 0;
-		width: 94%;
-		padding-top: 5rem;
-		.emoji-container {
-			border-radius: 6px;
+	.naan-content-panel {
+		.naan-emoji {
+			.emoji-container {
+				border-radius: 6px;
+				width: 100%;
+			}
+		}
+		.naan-emoji, .track-list {
+			@include vendor('transition', (
+				'opacity #{_duration(cal_y)} ease',
+				'transform #{_duration(cal_y)} ease-in-out',
+			));
+			position: fixed;
+			background: white;
+			z-index: 9999;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			top: 90%; right: 0; bottom: 0; left: 0;
+			margin: 0 auto;
+			@include vendor('transform', 'translateY(10em)');
+			opacity: 0;
+			width: 94%;
+			padding-top: 5rem;
 		}
 	}
 }
-.naan-emoji.loaded {
+.naan-emoji.loaded, .track-list.loaded {
 	display: initial;
 	@include vendor('transition', (
 		'opacity #{_duration(cal_y)} ease',
@@ -33,6 +38,12 @@
 	@include vendor('transform', 'translateY(-90%)');
 	opacity: 1;
 	padding: 0;
+}
+.track-list.loaded {
+	@include vendor('transform', 'translateY(-520%)');
+	div {
+		background: _palette(fg);
+	}
 }
 
 .blur-in {
