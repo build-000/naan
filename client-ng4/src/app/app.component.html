@@ -13,7 +13,7 @@
 						</div>
 						<div id="weather-comments">
 							<span class="naan-icon naan-iconcircles-dash"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
-							<p>{{selectedEmoji}}한 Playlist를 가지고 왔어요.</p>
+							<p><span>{{selectedEmoji}}</span> 한 Playlist를 가지고 왔어요.</p>
 						</div>
 					</div>
 				</div>
@@ -36,18 +36,15 @@
 				</div>
 			</div>
 			<div class="panel-playing-list">
-				<div class="header">
-					<h2>Now </h2>
-					<h2>playing list </h2>
-				</div>
 				<div class="track-list">
 					<div *ngFor="let track of tracks;let i=index;">
-						<div>
-							<img class="track-thumb" height="50px;" src={{track.artwork_url}}/>
+						<div class="track-thumb">
+							<img src={{track.artwork_url}}/>
 						</div>
-						<div>
-							<span>{{track.title}}</span>
-							<span>{{track.author}}</span>
+						<div class="track-list-details">
+							<div class="title">{{track.title}}</div>
+							<div class="author">{{track.author}}</div>
+							<!-- <hr> -->
 						</div>
 					</div>
 				</div>

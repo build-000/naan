@@ -53,6 +53,9 @@
 	p {
 		@include fontsize(eta, all);
 		color: _palette(fg-bold);
+		span {
+			text-transform: uppercase;
+		}
 	}
 }
 #weather-details {

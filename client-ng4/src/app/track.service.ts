@@ -94,7 +94,9 @@ export class TrackService {
     )
   }
   changeArtworkUrl(url : string) {
-    if (url != null) var res = url.replace("-large.jpg", "-t500x500.jpg");
+    var res;
+    if (url != null) res = url.replace("-large.jpg", "-t500x500.jpg");
+    else res = '/src/images/no-artwork.png';
     return res;
   }
 }
