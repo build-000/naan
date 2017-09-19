@@ -19,6 +19,7 @@
 	}
 }
 .player-header {
+	padding: 0 3rem;
 	.track-title {
 		@include fontsize(gamma, all);
 	}
