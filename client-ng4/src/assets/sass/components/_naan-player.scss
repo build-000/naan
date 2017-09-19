@@ -3,6 +3,7 @@
 }
 .player-nav {
 	.naan-icon {
+		cursor: pointer;
 		&:nth-of-type(1) {
 			float:left;
 			margin-left:20px;
@@ -36,7 +37,6 @@
 }
 .player-cover {
 	background: linear-gradient(to right, rgba(63, 193, 255, 0.0), #C3D644 36%, #C3D644 56%, rgba(63, 193, 255, 0.0));
-	min-width: 800px;
 	min-height: 300px;
 	-webkit-mask-image: url('/src/images/liquid_bg.png');
 	-webkit-mask-position: center center;

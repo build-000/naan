@@ -165,4 +165,12 @@ export class AppComponent {
 		$('.overlay').removeClass('blur-in');
 		$('.overlay').addClass('blur-out');
 	}
+	open_naan_playlist() {
+		$('.panel-playing-list').addClass('loaded');
+		$('.panel-emoji').removeClass('loaded');
+	}
+	open_naan_emoji_pan() {
+		$('.panel-emoji').addClass('loaded');
+		$('.panel-playing-list').removeClass('loaded');
+	}
 }

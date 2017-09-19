@@ -1,16 +1,47 @@
-.naan-content {
+.naan-content-panel {
+	background: _palette(fg);
 	display: block;
 	.naan-weather {
 		height: 35vh;
 		text-align: center;
 		position: relative;
-		background: _palette(fg);
 	}
 	.naan-emoji {
-		background: _palette(fg);
 		height: 65vh;
 		text-align: center;
 		position: relative;
+	}
+	.panel-emoji, .panel-playing-list {
+		@include vendor('transition', (
+			'opacity #{_duration(cal_y)} ease',
+			'transform #{_duration(cal_y)} ease-in-out',
+		));
+		z-index: 9999;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		top: 130%; right: 0; bottom: 0; left: 0;
+		margin: 0 auto;
+		@include vendor('transform', 'translateX(-20em)');
+		opacity: 0;
+		padding-top: 5rem;
+		position: fixed;
+		.emoji-container {
+			width: initial;
+		}
+		&.loaded {
+			@include vendor('transition', (
+				'opacity #{_duration(cal_y)} ease',
+				'transform #{_duration(cal_y)} ease-in-out',
+			));
+			@include vendor('transform', 'translateX(0%)');
+			opacity: 1;
+			padding: 0;
+			position: initial;
+			.emoji-container {
+				width: 100%;
+			}
+		}
 	}
 }
 #weather-comments {
@@ -60,7 +91,6 @@
 	left: 50%;
 	@include vendor("transform", "translate(-50%, -50%)");
 	text-align: center;
-	width: 100%;
 	padding: 1.5vmax;
 }
 .emoji-wrapper {
