@@ -26,8 +26,8 @@
 						<div class="emoji-wrapper">
 							<div class="row">
 								<div class="emoji-content 4u" *ngFor="let emoji of emojis">
-									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()"/>
-									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name); $event.stopPropagation()" style="opacity:0.2;"/>
+									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name, emoji.cover_color); $event.stopPropagation()"/>
+									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name, emoji.cover_color); $event.stopPropagation()" style="opacity:0.2;"/>
 									<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
 								</div>
 							</div>

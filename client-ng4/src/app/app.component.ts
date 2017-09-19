@@ -87,10 +87,12 @@ export class AppComponent {
 		}
 	}
 
-	onClickEmoji(mood : string): void {
+	onClickEmoji(mood : string, cover_color : string): void {
 		if (!mood){
 			return;
 		}
+		console.log('mood : ' + mood);
+		this.changePlayerColor(cover_color);
 		this.variableDataClear();
 		this.close_emoji_mobile();
 		this.track.title = 'loading...';
@@ -113,6 +115,9 @@ export class AppComponent {
 				console.log(err);
 			}
 		)
+	}
+	changePlayerColor(cover_color : string): void{
+		$(".player-cover").css("background", "linear-gradient(to right, rgba(63, 193, 255, 0), " + cover_color + " 36%, " + cover_color + " 56%, rgba(63, 193, 255, 0))");
 	}
 	variableDataClear(): void{
 		this.firstExcution = false;
