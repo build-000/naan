@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var helpers = require('./helpers');
 
 module.exports = {
@@ -46,7 +47,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+        loaders: ['raw-loader', 'sass-loader']
       }
     ]
   },
@@ -66,6 +67,16 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
+    }),
+
+    new CopyWebpackPlugin([
+        { from: 'src/assets', to: 'src/assets' },
+        { from: 'src/images', to: 'src/images' },
+    ], {
+        // By default, we only copy modified files during
+        // a watch or webpack-dev-server build. Setting this
+        // to `true` copies all files.
+        copyUnmodified: true
     })
   ]
 };
