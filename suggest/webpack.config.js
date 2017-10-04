@@ -17,7 +17,7 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs',
     path: '.webpack',
-    filename: 'handlers.js', // this should match the first part of function handler in serverless.yml
+    filename: 'index.js', // this should match the first part of function handler in serverless.yml
   },
   externals: ['aws-sdk', 'electron'],
   plugins: [

@@ -11,15 +11,21 @@ provider:
 
 functions:
   mockSuggest:
-    handler: src/handlers/mockApi
+    handler: index/mockApi
     events:
       - http:
           path: tracks
           method: get
   suggest:
-    handler: src/handlers/suggest
+    handler: index/suggest
     timeout: 30
     events:
       - http:
           path: tracks/suggestions
+          method: get
+  hello:
+    handler: index/hello
+    events:
+      - http:
+          path: tracks/hello
           method: get
