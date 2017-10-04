@@ -27,5 +27,5 @@ exports.hello2 = (event: any, context: any, callback: any) => callback(null,
 exports.hello3 = (event: any, context: any, callback: any) => callback(null, helloconst(event));
 exports.mockapi = (event: any, context: any, callback: any) => callback(null, mock_api());
 exports.suggest = async (event: Event, context: any, callback: any) => callback(null, 
-	await suggest_tracks(event)
-);
+		await suggest_tracks(event)
+	);
