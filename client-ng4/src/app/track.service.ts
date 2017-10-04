@@ -13,7 +13,7 @@ import 'rxjs/add/operator/toPromise';
 export class TrackService {
   tracks : Track[] = [];
   track : Track
-  private trackUrl = 'https://91igu4dgel.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions';
+  private trackUrl = 'https://udw2i8bm5b.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions';
   private cliend_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
   private player : any;
   private firstExcution = false;
