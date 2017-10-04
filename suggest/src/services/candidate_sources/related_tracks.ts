@@ -23,6 +23,9 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
         set.weather === this.weather;
     }).map((set) => set.id);
 
+    var randomNumberBetween0and12 = Math.floor(Math.random() * 13);
+    const relatedTracks2 = await this.getRelatedTracks(mappedTrackIds[randomNumberBetween0and12]);
+
     const scoredTracks = await BbPromise.map(mappedTrackIds, async (trackId) => {
       try {
         return await this.getTrack(trackId);
@@ -32,16 +35,7 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
       }
     }, { concurrency: this.MAX_CONCURRENCY });
 
-    const relatedTracks = await BbPromise.map(mappedTrackIds, async (trackId) => {
-      try {
-        return await this.getRelatedTracks(trackId);
-      } catch (e) {
-        this.log("Got unexpected error: ", e);
-        return [];
-      }
-    }, { concurrency: this.MAX_CONCURRENCY });
-
-    return _([scoredTracks, ...relatedTracks])
+    return _([relatedTracks2, ...relatedTracks2])
       .flattenDeep<CandidateItem>()
       .filter((v) => v)
       .slice(0, count)
@@ -108,7 +102,6 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
             trackId,
           },
         }));
-
         resolve(candidates);
       });
     });

@@ -1,4 +1,4 @@
-service: nareum
+service: naan-sg3
 
 plugins:
   - serverless-webpack
@@ -7,19 +7,53 @@ provider:
   name: aws
   region: ap-northeast-2
   runtime: nodejs6.10
-  environment: ${file(./env/${opt:stage}.yml)}
+  # environment: ${file(./env/${opt:stage}.yml)}
 
 functions:
-  mockSuggest:
-    handler: handlers.mockApi
+  # mockSuggest:
+  #   handler: handler.handleIt
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: tracks
+  #         integration: lambda
+
+  hello:
+    handler: handler.hello
     events:
       - http:
-          path: tracks
           method: get
+          path: tracks/hello
+          integration: lambda
+  hello2:
+    handler: handler.hello2
+    events:
+      - http:
+          method: get
+          path: tracks/hello2
+          integration: lambda
+  hello3:
+    handler: handler.hello3
+    events:
+      - http:
+          method: get
+          path: tracks/hello3
+          integration: lambda
+  mockSuggest:
+    handler: handler.mockapi
+    events:
+      - http:
+          method: get
+          path: tracks
+          integration: lambda
   suggest:
-    handler: handlers.suggest
+    handler: handler.suggest
     timeout: 30
     events:
       - http:
           path: tracks/suggestions
           method: get
+
+
+
+

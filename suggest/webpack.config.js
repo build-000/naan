@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
+const slsw = require('serverless-webpack');
 
 module.exports = {
-  entry: './src/handlers/index.ts',
+  entry: slsw.lib.entries,
   target: 'node',
   module: {
     loaders: [
@@ -16,8 +17,8 @@ module.exports = {
   },
   output: {
     libraryTarget: 'commonjs',
-    path: '.webpack',
-    filename: 'handlers.js', // this should match the first part of function handler in serverless.yml
+    path: path.join(__dirname, '.webpack'),
+    filename: '[name].js'
   },
   externals: ['aws-sdk', 'electron'],
   plugins: [

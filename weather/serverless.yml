@@ -1,4 +1,4 @@
-service: Naan # NOTE: update this with your service name
+service: N-weather # NOTE: update this with your service name
 provider:
   name: aws
   runtime: python3.6
@@ -13,3 +13,5 @@ functions:
       - http:
           path: weather
           method: get
+plugins:
+  - serverless-python-requirements
