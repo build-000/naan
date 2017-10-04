@@ -7,25 +7,51 @@ provider:
   name: aws
   region: ap-northeast-2
   runtime: nodejs6.10
-  environment: ${file(./env/${opt:stage}.yml)}
+  # environment: ${file(./env/${opt:stage}.yml)}
 
 functions:
+  # hello:
+  #   handler: handler.hello
+  #   events:
+  #     - http:
+  #         method: get
+  #         path: hello
+  #         integration: lambda
+
   mockSuggest:
-    handler: index/mockApi
+    handler: handler.handleIt
     events:
       - http:
+          method: get
           path: tracks
-          method: get
-  suggest:
-    handler: index/suggest
-    timeout: 30
-    events:
-      - http:
-          path: tracks/suggestions
-          method: get
+          integration: lambda
+
   hello:
-    handler: index/hello
+    handler: handler.hello
     events:
       - http:
-          path: tracks/hello
           method: get
+          path: tracks/hello
+          integration: lambda
+
+  # suggest:
+  #   handler: index/suggest
+  #   timeout: 30
+  #   events:
+  #     - http:
+  #         path: tracks/suggestions
+  #         method: get
+  hello2:
+    handler: handler.hello2
+    events:
+      - http:
+          method: get
+          path: tracks/hello2
+          integration: lambda
+  hello3:
+    handler: handler.hello3
+    events:
+      - http:
+          method: get
+          path: tracks/hello3
+          integration: lambda
