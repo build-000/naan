@@ -43,6 +43,7 @@ node_modules
 
 # Distribution / packaging
 dist/
+dist.zip
 .Python
 env/
 build/

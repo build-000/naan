@@ -24,7 +24,7 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
     }).map((set) => set.id);
 
     var randomNumberBetween0and12 = Math.floor(Math.random() * 13);
-    const relatedTracks2 = await this.getRelatedTracks(mappedTrackIds[randomNumberBetween0and12]);
+    const relatedTracks = await this.getRelatedTracks(mappedTrackIds[randomNumberBetween0and12]);
 
     const scoredTracks = await BbPromise.map(mappedTrackIds, async (trackId) => {
       try {
@@ -35,7 +35,7 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
       }
     }, { concurrency: this.MAX_CONCURRENCY });
 
-    return _([relatedTracks2, ...relatedTracks2])
+    return _([relatedTracks, ...relatedTracks])
       .flattenDeep<CandidateItem>()
       .filter((v) => v)
       .slice(0, count)
