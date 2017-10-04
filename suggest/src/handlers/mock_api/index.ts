@@ -13,3 +13,15 @@ export default async function handler(event: LambdaProxy.Event) {
     body: JSON.stringify(MOCK_RELATED_TRACKS.filter((v: any) => v.kind === "track").slice(0, 20)),
   };
 }
+export var mock_api = function() {
+  console.log('hey mock_api!');
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Method": "OPTIONS, GET",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(MOCK_RELATED_TRACKS.filter((v: any) => v.kind === "track").slice(0, 20)),
+  };
+}

@@ -10,21 +10,13 @@ provider:
   # environment: ${file(./env/${opt:stage}.yml)}
 
 functions:
-  # hello:
-  #   handler: handler.hello
+  # mockSuggest:
+  #   handler: handler.handleIt
   #   events:
   #     - http:
   #         method: get
-  #         path: hello
+  #         path: tracks
   #         integration: lambda
-
-  mockSuggest:
-    handler: handler.handleIt
-    events:
-      - http:
-          method: get
-          path: tracks
-          integration: lambda
 
   hello:
     handler: handler.hello
@@ -33,14 +25,6 @@ functions:
           method: get
           path: tracks/hello
           integration: lambda
-
-  # suggest:
-  #   handler: index/suggest
-  #   timeout: 30
-  #   events:
-  #     - http:
-  #         path: tracks/suggestions
-  #         method: get
   hello2:
     handler: handler.hello2
     events:
@@ -55,3 +39,21 @@ functions:
           method: get
           path: tracks/hello3
           integration: lambda
+  mockSuggest:
+    handler: handler.mockapi
+    events:
+      - http:
+          method: get
+          path: tracks
+          integration: lambda
+  suggest:
+    handler: handler.suggest
+    timeout: 30
+    events:
+      - http:
+          path: tracks/suggestions
+          method: get
+
+
+
+

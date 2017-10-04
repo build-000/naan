@@ -18,6 +18,7 @@ export class Suggester {
   }
 
   public async suggest(count: number = 100) {
+    console.log('suggest : ' + count);
     const candidates = await BbPromise.map(this.sources, (source) => source.fetch());
 
     return _(candidates)
