@@ -1,5 +1,6 @@
 import { Event } from "../../interfaces/lambda-proxy";
-import { MOOD, Suggester, WEATHER } from "../../services/suggest";
+import { Suggester } from "../../services/suggest";
+import { MOOD, WEATHER } from "../../services/candidate_sources/base";
 
 const ACCEPTABLE_MOODS = {
   [MOOD.RELAXED]: true,
@@ -16,6 +17,7 @@ const ACCEPTABLE_WEATHERS = {
 };
 
 export default async function(event: Event) {
+  console.log('async');
   const query = event.queryStringParameters || {};
 
   const { mood, weather, debug } = query;

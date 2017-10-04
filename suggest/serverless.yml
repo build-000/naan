@@ -1,4 +1,4 @@
-service: nareum
+service: naan-sg3
 
 plugins:
   - serverless-webpack
@@ -11,13 +11,13 @@ provider:
 
 functions:
   mockSuggest:
-    handler: handlers.mockApi
+    handler: src/handlers/mockApi
     events:
       - http:
           path: tracks
           method: get
   suggest:
-    handler: handlers.suggest
+    handler: src/handlers/suggest
     timeout: 30
     events:
       - http:
