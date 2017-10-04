@@ -1,0 +1,17 @@
+scdl/__init__.py,sha256=nmUEm5TmjucbXjppumWrJ4vBLloYJ2JNnGJKbNkktSY,616
+scdl/client.py,sha256=sea6PDYRE_jrwOyLM_WEJhe1Nf4yFj_QINl74TjkK8M,796
+scdl/scdl.py,sha256=hHf1QR9CjRqFDVceFgweXxvHY9LGoxLOC2gFu1WXD2g,16584
+scdl/utils.py,sha256=ppVYoOCa0giUs6J6k2XqnsUGFS5pD3H2Z5GYg_3xAbY,1657
+scdl-1.6.6.dist-info/DESCRIPTION.rst,sha256=AgyGwC3c4fJMhPBLRj1Ygsc-fPHYoV-MNCStfSTbLQc,55
+scdl-1.6.6.dist-info/METADATA,sha256=0mT4jVouB9YHutYBKCIAyA4WMvdDQjrweuxUwViQm4A,741
+scdl-1.6.6.dist-info/RECORD,,
+scdl-1.6.6.dist-info/WHEEL,sha256=UMxW5ad6zjudXe4jPWTM-wnTIGreEj2qx-IkE2LS1Rk,93
+scdl-1.6.6.dist-info/entry_points.txt,sha256=5VlNsgGz8Iex6t1rLza8spX8pmwQwv1HqGfNvxd5gOM,41
+scdl-1.6.6.dist-info/metadata.json,sha256=9ZIJXXZeA0nwJhlQ8ti7aOIt2Mb_w-L0ZMgG9DHuleU,924
+scdl-1.6.6.dist-info/top_level.txt,sha256=xyZjkbZgAel3_TkuQOii_KJSe7mgchQXTNXbmZ8VGTA,5
+../../bin/scdl,sha256=emZrLzHnw-JSuIvDbUeh5ozpTFhjnQlF5gWkll8hp98,259
+scdl-1.6.6.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+scdl/__pycache__/__init__.cpython-36.pyc,,
+scdl/__pycache__/client.cpython-36.pyc,,
+scdl/__pycache__/scdl.cpython-36.pyc,,
+scdl/__pycache__/utils.cpython-36.pyc,,
