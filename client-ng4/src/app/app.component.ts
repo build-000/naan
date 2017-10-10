@@ -64,7 +64,6 @@ export class AppComponent {
 			}
 			this.trackService.nextTrack(this.trackIndex).then(
 				track => {
-					//this.getTrack();
 					this.track = track;
 					this.playFlag = true;
 				}
@@ -91,7 +90,6 @@ export class AppComponent {
 		if (!mood){
 			return;
 		}
-		console.log('mood : ' + mood);
 		this.changePlayerColor(cover_color);
 		this.variableDataClear();
 		this.close_emoji_mobile();
@@ -101,7 +99,6 @@ export class AppComponent {
 			data => {
 				this.selectedEmoji = mood;
 				this.tracks = data;
-				console.log(this.tracks);
 				if (this.playFlag == false){
 					this.trackService.getTrack(0).then(track =>{
 						this.trackIndex = 0;

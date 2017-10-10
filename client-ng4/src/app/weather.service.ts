@@ -21,7 +21,6 @@ export class WeatherService {
               israin : data['weather_description'],
               location : data['location']
             }
-            console.log(this.weather)
             resolve(this.weather);
           },
           err => {
