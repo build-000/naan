@@ -1,9 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-
-import { OnInit } from '@angular/core';
 import { Router }  from '@angular/router';
-
 import { Weather } from './weather';
 import { WeatherService } from './weather.service';
 
@@ -21,12 +18,11 @@ import * as $ from 'jquery';
 	selector: 'my-app',
 	templateUrl: './app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	weather: Weather;
 	emojis: Emoji[] = [];
 	tracks : Track[] = [];
-	track : Track;
-
+	track: Track;
 	public selectedEmoji : string;
 	public trackIndex:number;
 	public playFlag = false;
@@ -37,55 +33,51 @@ export class AppComponent {
 		private weatherService : WeatherService,
 		private trackService : TrackService
 	){}
-
-	onClickNextbtn():void{
-		if (this.tracks.length>0){
-			if (this.trackIndex == this.tracks.length-1){
-				this.trackIndex = 0;
-			}else{
-				this.trackIndex++;
-			}
-			this.trackService.nextTrack(this.trackIndex).then(
-				track => {
-					this.track = track;
-					this.playFlag = true;
-				}
-			);
-
-		}
+	ngOnInit() {
+		this.track = new Track;
+		this.weatherService.getWeatherData()
+		.then(weather => {
+			this.weather = weather;
+			this.emojiService.getEmojis()
+				.then(emojis => {
+					this.emojis = emojis.slice(0,9);
+					this.set_mobile_pop(); })
+		}).catch(err => {
+			console.log(err.message);
+		})
 	}
-
+	async onClickNextbtn() {
+		await this.trackService.playNextTrack();
+		this.updateTracknNow();
+	}
 	onClickPrevBtn():void{
 		if (this.tracks.length>0){
-			if (this.trackIndex == 0){
-				this.trackIndex = this.tracks.length-1;
+			if (this.trackService.trackIndex == 0){
+				this.trackService.trackIndex = this.tracks.length-1;
 			}else{
-				this.trackIndex--
+				this.trackService.trackIndex--
 			}
-			this.trackService.nextTrack(this.trackIndex).then(
+			this.trackService.nextTrack(this.trackService.trackIndex).then(
 				track => {
-					this.track = track;
+					this.trackService.track_now = track;
 					this.playFlag = true;
 				}
 			)
 
 		}
 	}
-
 	onClickPauseBtn():void{
 		if (this.tracks.length>0){
 			this.playFlag = false;
 			this.trackService.pauseTrack();
 		}
 	}
-
 	onClickPlayBtn():void{
 		if (this.tracks.length>0){
-			this.trackService.playTrack(this.trackIndex);
+			this.trackService.playTrack(this.trackService.trackIndex);
 			this.playFlag = true;
 		}
 	}
-
 	onClickEmoji(mood : string, cover_color : string): void {
 		if (!mood){
 			return;
@@ -101,10 +93,11 @@ export class AppComponent {
 				this.tracks = data;
 				if (this.playFlag == false){
 					this.trackService.getTrack(0).then(track =>{
-						this.trackIndex = 0;
+						this.trackService.trackIndex = 0;
 						this.playFlag = true;
 						this.firstExcution = true;
-						this.track = track;
+						this.trackService.track_now = track;
+						this.updateTracknNow();
 					});
 				}
 			},
@@ -123,22 +116,8 @@ export class AppComponent {
 			this.playFlag = false;
 		}
 		this.tracks =[];
-		this.track = new Track;
+		this.trackService.track_now = new Track;
 		this.selectedEmoji = '';
-	}
-
-
-	ngOnInit() {
-		this.weatherService.getWeatherData()
-		.then(weather => {
-			this.weather = weather;
-			this.emojiService.getEmojis()
-				.then(emojis => {
-					this.emojis = emojis.slice(0,9);
-					this.set_mobile_pop(); })
-		}).catch(err => {
-			console.log(err.message);
-		})
 	}
 	set_mobile_pop() {
 		// Emoji Moblie Popup
@@ -194,5 +173,8 @@ export class AppComponent {
 	open_naan_emoji_pan() {
 		$('.panel-emoji').addClass('loaded');
 		$('.panel-playing-list').removeClass('loaded');
+	}
+	updateTracknNow() {
+		this.track = this.trackService.track_now;
 	}
 }

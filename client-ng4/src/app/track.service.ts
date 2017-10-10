@@ -12,14 +12,18 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TrackService {
   tracks : Track[] = [];
-  track : Track
+  track : Track;
+  track_now: Track;
+  trackIndex: number;
   private trackUrl = 'https://udw2i8bm5b.execute-api.ap-northeast-2.amazonaws.com/prod/tracks/suggestions';
   private cliend_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
   private player : any;
   private firstExcution = false;
   private playFlag = false;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient){
+    this.trackIndex = 0;
+  }
 
   soundcloudInit():any{
     this.firstExcution = true;
@@ -30,7 +34,34 @@ export class TrackService {
       console.log('playing...');
     });
     this.player.on('finish', ()=>{
+      console.log('finishing...');
+      this.nextTrack(this.get_current_trackIndex() + 1);
     });
+  }
+  pauseTrack():void{
+    this.player.pause();
+  }
+  playTrack(trackIndex:number):void{
+    if (this.playFlag == false){
+      this.playFlag = true;
+      this.playEvent();
+    }
+    this.player.play();
+  }
+  async playNextTrack() {
+    if (this.tracks.length > 0){
+      if (this.trackIndex == this.tracks.length-1){
+        this.trackIndex = 0;
+      } else {
+        this.trackIndex++;
+      }
+      await this.nextTrack(this.trackIndex).then(
+        track_now => {
+          this.track_now = track_now;
+          this.playFlag = true;
+        }
+      );
+    }
   }
   nextTrack(trackIndex:number):Promise<Track>{
     this.pauseTrack();
@@ -50,16 +81,6 @@ export class TrackService {
     }).catch(err=>{
       console.log('Error : ' + err)
     })
-  }
-  pauseTrack():void{
-    this.player.pause();
-  }
-  playTrack(trackIndex:number):void{
-    if (this.playFlag == false){
-      this.playFlag = true;
-      this.playEvent();
-    }
-    this.player.play();
   }
   getTracks(mood: string, weather : string): Promise<Track[]> {
     let url = `${this.trackUrl}?mood=${mood}&weather=${weather}`;
@@ -97,5 +118,8 @@ export class TrackService {
     if (url != null) res = url.replace("-large.jpg", "-t500x500.jpg");
     else res = '/src/images/no-artwork.png';
     return res;
+  }
+  get_current_trackIndex(): number {
+    return this.trackIndex;
   }
 }
