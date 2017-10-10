@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { Router }  from '@angular/router';
 import { Weather } from './weather';
@@ -16,7 +16,8 @@ import * as $ from 'jquery';
 	styleUrls: ['../assets/sass/main.scss'],
 	encapsulation: ViewEncapsulation.None,
 	selector: 'my-app',
-	templateUrl: './app.component.html'
+	templateUrl: './app.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 	weather: Weather;
@@ -31,7 +32,8 @@ export class AppComponent implements OnInit {
 	constructor(
 		private emojiService : EmojiService,
 		private weatherService : WeatherService,
-		private trackService : TrackService
+		private trackService : TrackService,
+		private ref: ChangeDetectorRef
 	){}
 	ngOnInit() {
 		this.track = new Track;
@@ -41,17 +43,23 @@ export class AppComponent implements OnInit {
 			this.emojiService.getEmojis()
 				.then(emojis => {
 					this.emojis = emojis.slice(0,9);
-					this.set_mobile_pop(); })
+					this.set_mobile_pop();
+				})
 		}).catch(err => {
 			console.log(err.message);
 		})
+		setInterval(() => {
+			this.ref.markForCheck();
+		}, 1000);
 	}
 	async onClickNextbtn() {
 		await this.trackService.playNextTrack();
+		this.playerEvent();
 		this.updateTracknNow();
 	}
 	async onClickPrevBtn() {
 		await this.trackService.playPrevTrack();
+		this.playerEvent();
 		this.updateTracknNow();
 	}
 	onClickPauseBtn():void{
@@ -83,6 +91,7 @@ export class AppComponent implements OnInit {
 				this.tracks = data;
 				if (this.trackService.playFlag_now == false){
 					this.trackService.getTrack(0).then(data =>{
+						this.playerEvent();
 						this.trackService.trackIndex = 0;
 						this.trackService.playFlag_now = true;
 						this.firstExcution = true;
@@ -95,6 +104,21 @@ export class AppComponent implements OnInit {
 				console.log(err);
 			}
 		)
+	}
+	playerEvent() {
+		this.trackService.player.on('play',()=>{
+			console.log('playing...!!!');
+		});
+		this.trackService.player.on('finish', async ()=>{
+			console.log('finishing...!!!');
+			await this.trackService.playNextTrack();
+			this.playerEvent();
+			this.updateTracknNow();
+			this.ref.markForCheck();
+		});
+		this.trackService.player.on('pause', async ()=>{
+			console.log('pausing...!!!');
+		});
 	}
 	changePlayerColor(cover_color : string): void{
 		$(".player-cover").css("background", "linear-gradient(to right, rgba(63, 193, 255, 0), " + cover_color + " 36%, " + cover_color + " 56%, rgba(63, 193, 255, 0))");
