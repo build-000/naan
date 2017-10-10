@@ -19,7 +19,7 @@ export class TrackService {
   private cliend_id = '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH';
   private player : any;
   private firstExcution = false;
-  private playFlag = false;
+  playFlag_now = false;
 
   constructor(private http: HttpClient){
     this.trackIndex = 0;
@@ -42,8 +42,8 @@ export class TrackService {
     this.player.pause();
   }
   playTrack(trackIndex:number):void{
-    if (this.playFlag == false){
-      this.playFlag = true;
+    if (this.playFlag_now == false){
+      this.playFlag_now = true;
       this.playEvent();
     }
     this.player.play();
@@ -58,7 +58,7 @@ export class TrackService {
       await this.reloadTrack(this.trackIndex).then(
         track_now => {
           this.track_now = track_now;
-          this.playFlag = true;
+          this.playFlag_now = true;
         }
       );
     }
@@ -73,7 +73,7 @@ export class TrackService {
       await this.reloadTrack(this.trackIndex).then(
         track_now => {
           this.track_now = track_now;
-          this.playFlag = true;
+          this.playFlag_now = true;
         }
       )
     }
@@ -85,7 +85,7 @@ export class TrackService {
     })
   }
   getTrack(trackIndex:number):Promise<Track>{
-    this.playFlag = false;
+    this.playFlag_now = false;
     return new Promise((resolve, reject)=>{
       SC.stream(`/tracks/${this.tracks[trackIndex].id}`).then((player:any)=>{
         this.track = this.tracks[trackIndex]

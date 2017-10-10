@@ -56,14 +56,16 @@ export class AppComponent implements OnInit {
 	}
 	onClickPauseBtn():void{
 		if (this.tracks.length>0){
-			this.playFlag = false;
+			this.trackService.playFlag_now = false;
 			this.trackService.pauseTrack();
+			this.updateTracknNow();
 		}
 	}
 	onClickPlayBtn():void{
 		if (this.tracks.length>0){
 			this.trackService.playTrack(this.trackService.trackIndex);
-			this.playFlag = true;
+			this.trackService.playFlag_now = true;
+			this.updateTracknNow();
 		}
 	}
 	onClickEmoji(mood : string, cover_color : string): void {
@@ -79,10 +81,10 @@ export class AppComponent implements OnInit {
 			data => {
 				this.selectedEmoji = mood;
 				this.tracks = data;
-				if (this.playFlag == false){
+				if (this.trackService.playFlag_now == false){
 					this.trackService.getTrack(0).then(track =>{
 						this.trackService.trackIndex = 0;
-						this.playFlag = true;
+						this.trackService.playFlag_now = true;
 						this.firstExcution = true;
 						this.trackService.track_now = track;
 						this.updateTracknNow();
@@ -99,9 +101,9 @@ export class AppComponent implements OnInit {
 	}
 	variableDataClear(): void{
 		this.firstExcution = false;
-		if (this.playFlag == true){
+		if (this.trackService.playFlag_now == true){
 			this.trackService.pauseTrack();
-			this.playFlag = false;
+			this.trackService.playFlag_now = false;
 		}
 		this.tracks =[];
 		this.trackService.track_now = new Track;
@@ -164,5 +166,6 @@ export class AppComponent implements OnInit {
 	}
 	updateTracknNow() {
 		this.track = this.trackService.track_now;
+		this.playFlag = this.trackService.playFlag_now;
 	}
 }
