@@ -82,11 +82,11 @@ export class AppComponent implements OnInit {
 				this.selectedEmoji = mood;
 				this.tracks = data;
 				if (this.trackService.playFlag_now == false){
-					this.trackService.getTrack(0).then(track =>{
+					this.trackService.getTrack(0).then(data =>{
 						this.trackService.trackIndex = 0;
 						this.trackService.playFlag_now = true;
 						this.firstExcution = true;
-						this.trackService.track_now = track;
+						this.trackService.track_now = data.track;
 						this.updateTracknNow();
 					});
 				}

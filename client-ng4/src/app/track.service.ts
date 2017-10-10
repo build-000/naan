@@ -35,7 +35,8 @@ export class TrackService {
     });
     this.player.on('finish', ()=>{
       console.log('finishing...');
-      this.reloadTrack(this.get_current_trackIndex() + 1);
+      // this.reloadTrack(this.get_current_trackIndex() + 1);
+      this.playNextTrack();
     });
   }
   pauseTrack():void{
@@ -56,8 +57,8 @@ export class TrackService {
         this.trackIndex++;
       }
       await this.reloadTrack(this.trackIndex).then(
-        track_now => {
-          this.track_now = track_now;
+        data => {
+          this.track_now = data.track;
           this.playFlag_now = true;
         }
       );
@@ -71,27 +72,27 @@ export class TrackService {
         this.trackIndex--
       }
       await this.reloadTrack(this.trackIndex).then(
-        track_now => {
-          this.track_now = track_now;
+        data => {
+          this.track_now = data.track;
           this.playFlag_now = true;
         }
       )
     }
   }
-  reloadTrack(trackIndex:number):Promise<Track>{
+  reloadTrack(trackIndex:number):Promise<any>{
     this.pauseTrack();
     return new Promise((resolve,reject)=>{
       resolve(this.getTrack(trackIndex))
     })
   }
-  getTrack(trackIndex:number):Promise<Track>{
+  getTrack(trackIndex:number):Promise<any>{
     this.playFlag_now = false;
     return new Promise((resolve, reject)=>{
       SC.stream(`/tracks/${this.tracks[trackIndex].id}`).then((player:any)=>{
         this.track = this.tracks[trackIndex]
         this.player = player;
         this.playTrack(trackIndex)
-        resolve(this.track);
+        resolve({ track: this.track, player: this.player });
       })
     }).catch(err=>{
       console.log('Error : ' + err)
