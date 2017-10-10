@@ -22,6 +22,9 @@
 	padding: 0 3rem;
 	.track-title {
 		@include fontsize(gamma, all);
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 	.track-author {
 		@include fontsize(delta, all);
