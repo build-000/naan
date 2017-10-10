@@ -55,25 +55,25 @@ export class AppComponent implements OnInit {
 	async onClickNextbtn() {
 		await this.trackService.playNextTrack();
 		this.playerEvent();
-		this.updateTracknNow();
+		this.updateTrackNow();
 	}
 	async onClickPrevBtn() {
 		await this.trackService.playPrevTrack();
 		this.playerEvent();
-		this.updateTracknNow();
+		this.updateTrackNow();
 	}
 	onClickPauseBtn():void{
 		if (this.tracks.length>0){
 			this.trackService.playFlag_now = false;
 			this.trackService.pauseTrack();
-			this.updateTracknNow();
+			this.updateTrackNow();
 		}
 	}
 	onClickPlayBtn():void{
 		if (this.tracks.length>0){
 			this.trackService.playTrack(this.trackService.trackIndex);
 			this.trackService.playFlag_now = true;
-			this.updateTracknNow();
+			this.updateTrackNow();
 		}
 	}
 	onClickEmoji(mood : string, cover_color : string): void {
@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
 						this.trackService.playFlag_now = true;
 						this.firstExcution = true;
 						this.trackService.track_now = data.track;
-						this.updateTracknNow();
+						this.updateTrackNow();
 					});
 				}
 			},
@@ -113,7 +113,7 @@ export class AppComponent implements OnInit {
 			console.log('finishing...!!!');
 			await this.trackService.playNextTrack();
 			this.playerEvent();
-			this.updateTracknNow();
+			this.updateTrackNow();
 			this.ref.markForCheck();
 		});
 		this.trackService.player.on('pause', async ()=>{
@@ -188,7 +188,7 @@ export class AppComponent implements OnInit {
 		$('.panel-emoji').addClass('loaded');
 		$('.panel-playing-list').removeClass('loaded');
 	}
-	updateTracknNow() {
+	updateTrackNow() {
 		this.track = this.trackService.track_now;
 		this.playFlag = this.trackService.playFlag_now;
 	}
