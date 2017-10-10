@@ -50,21 +50,9 @@ export class AppComponent implements OnInit {
 		await this.trackService.playNextTrack();
 		this.updateTracknNow();
 	}
-	onClickPrevBtn():void{
-		if (this.tracks.length>0){
-			if (this.trackService.trackIndex == 0){
-				this.trackService.trackIndex = this.tracks.length-1;
-			}else{
-				this.trackService.trackIndex--
-			}
-			this.trackService.nextTrack(this.trackService.trackIndex).then(
-				track => {
-					this.trackService.track_now = track;
-					this.playFlag = true;
-				}
-			)
-
-		}
+	async onClickPrevBtn() {
+		await this.trackService.playPrevTrack();
+		this.updateTracknNow();
 	}
 	onClickPauseBtn():void{
 		if (this.tracks.length>0){

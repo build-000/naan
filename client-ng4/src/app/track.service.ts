@@ -35,7 +35,7 @@ export class TrackService {
     });
     this.player.on('finish', ()=>{
       console.log('finishing...');
-      this.nextTrack(this.get_current_trackIndex() + 1);
+      this.reloadTrack(this.get_current_trackIndex() + 1);
     });
   }
   pauseTrack():void{
@@ -55,7 +55,7 @@ export class TrackService {
       } else {
         this.trackIndex++;
       }
-      await this.nextTrack(this.trackIndex).then(
+      await this.reloadTrack(this.trackIndex).then(
         track_now => {
           this.track_now = track_now;
           this.playFlag = true;
@@ -63,7 +63,22 @@ export class TrackService {
       );
     }
   }
-  nextTrack(trackIndex:number):Promise<Track>{
+  async playPrevTrack() {
+    if (this.tracks.length > 0){
+      if (this.trackIndex == 0){
+        this.trackIndex = this.tracks.length-1;
+      }else{
+        this.trackIndex--
+      }
+      await this.reloadTrack(this.trackIndex).then(
+        track_now => {
+          this.track_now = track_now;
+          this.playFlag = true;
+        }
+      )
+    }
+  }
+  reloadTrack(trackIndex:number):Promise<Track>{
     this.pauseTrack();
     return new Promise((resolve,reject)=>{
       resolve(this.getTrack(trackIndex))
