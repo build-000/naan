@@ -13,7 +13,8 @@
 		large: '(max-width: 1024px)',
 		medium: '(max-width: 800px)',
 		small: '(max-width: 640px)',
-		xsmall: '(max-width: 480px)'
+		xsmall: '(max-width: 480px)',
+		xxsmall: '(max-width: 350px)' // iPhone5
 	));
 	@include skel-layout((
 		boxModel: 'border',

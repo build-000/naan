@@ -37,24 +37,27 @@ export var suggest_tracks = async function(event: Event) {
 
   const suggester = new Suggester(mood as MOOD, weather as WEATHER, process.env.SOUNDCLOUD_CLIENT_ID);
   const candidates = await suggester.suggest(count);
+  console.log('suggest_tracks ! ');
   return {
     statusCode: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS, GET",
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(debug ? candidates.map((v) => v.track) : candidates),
   };
 }
 
 function renderError(message: string, statusCode: number = 500) {
+  console.log('renderError! : ');
+  console.log(message);
   return {
     statusCode,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "OPTIONS, GET",
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       error: {

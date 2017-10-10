@@ -101,3 +101,8 @@
 		}
 	}
 }
+@include breakpoint(xxsmall) {
+	.player-cover {
+		min-height: 200px;
+	}
+}

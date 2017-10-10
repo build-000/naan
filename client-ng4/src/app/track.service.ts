@@ -21,7 +21,6 @@ export class TrackService {
 
   constructor(private http: HttpClient){}
 
-
   soundcloudInit():any{
     this.firstExcution = true;
     SC.initialize({client_id : this.cliend_id});

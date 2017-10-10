@@ -22,15 +22,15 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
       return set.mood === this.mood &&
         set.weather === this.weather;
     }).map((set) => set.id);
-
-    var randomNumberBetween0and12 = Math.floor(Math.random() * 13);
-    const relatedTracks = await this.getRelatedTracks(mappedTrackIds[randomNumberBetween0and12]);
+    const mappedTrackLength = mappedTrackIds.length;
+    var randNum = Math.floor(Math.random() * (mappedTrackLength));
+    const relatedTracks = await this.getRelatedTracks(mappedTrackIds[randNum]);
 
     const scoredTracks = await BbPromise.map(mappedTrackIds, async (trackId) => {
       try {
         return await this.getTrack(trackId);
       } catch (e) {
-        this.log("Got unexpected error: ", e);
+        console.log("Got unexpected error: ", e);
         return null;
       }
     }, { concurrency: this.MAX_CONCURRENCY });
@@ -57,7 +57,7 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
         }
 
         if (res.statusCode !== 200) {
-          this.log("getTrack", trackId, res.statusCode, body);
+          console.log("getTrack", trackId, res.statusCode, body);
           return reject(new Error(`Got unexpected status code ${res.statusCode}`));
         }
 
@@ -89,7 +89,7 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
         }
 
         if (res.statusCode !== 200) {
-          this.log("getRelatedTracks", trackId, res.statusCode, body);
+          console.log("getRelatedTracks", trackId, res.statusCode, body);
           return reject(new Error(`Got unexpected status code ${res.statusCode}`));
         }
 
