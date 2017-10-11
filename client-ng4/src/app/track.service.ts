@@ -67,7 +67,7 @@ export class TrackService {
       if (this.trackIndex == 0){
         this.trackIndex = this.tracks.length-1;
       }else{
-        this.trackIndex--
+        this.trackIndex--;
       }
       await this.reloadTrack(this.trackIndex).then(
         data => {

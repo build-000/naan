@@ -97,6 +97,7 @@ export class AppComponent implements OnInit {
 						this.firstExcution = true;
 						this.trackService.track_now = data.track;
 						this.updateTrackNow();
+						this.onClickPauseBtn();
 					});
 				}
 			},
