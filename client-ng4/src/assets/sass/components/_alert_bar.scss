@@ -68,3 +68,13 @@
 	position: absolute;
 	z-index: -1;
 }
+
+@include breakpoint(xsmall) {
+	.alert-navbar {
+		padding: 75px;
+	}
+	.special-btn-3d {
+		margin-top: 55px;
+	}
+}
+
