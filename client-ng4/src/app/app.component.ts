@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
 	}
 	onClickPlayBtn():void{
 		if (this.tracks.length>0){
-			this.trackService.playTrack(this.trackService.trackIndex);
+			this.trackService.playTrack();
 			this.trackService.playFlag_now = true;
 			this.updateTrackNow();
 		}

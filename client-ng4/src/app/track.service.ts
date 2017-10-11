@@ -41,7 +41,7 @@ export class TrackService {
   pauseTrack():void{
     this.player.pause();
   }
-  playTrack(trackIndex:number):void{
+  playTrack():void{
     if (this.playFlag_now == false){
       this.playFlag_now = true;
     }
@@ -89,7 +89,7 @@ export class TrackService {
       SC.stream(`/tracks/${this.tracks[trackIndex].id}`).then((player:any)=>{
         this.track = this.tracks[trackIndex]
         this.player = player;
-        this.playTrack(trackIndex)
+        this.playTrack();
         resolve({ track: this.track, player: this.player });
       })
     }).catch(err=>{
