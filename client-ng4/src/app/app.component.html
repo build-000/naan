@@ -56,6 +56,7 @@
 				<span class="naan-icon naan-iconbtn_list click-o" (click)="open_naan_playlist()"></span>
 				<span class="naan-icon naan-iconbtn_more click-o" (click)="open_naan_emoji_pan()"></span>
 			</div>
+			<div class="conver-background-blur" [ngStyle]="{'background-image': 'url(' + track.artwork_url + ')'}" ></div>
 			<div class="player-container overlay">
 				<div *ngIf="track" class="player-header">
 					<h2 class="track-title">{{track.title}}</h2>
