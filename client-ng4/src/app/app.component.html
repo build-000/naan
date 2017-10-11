@@ -1,15 +1,25 @@
-<div class="container" *ngIf="weather">
+<div class="navbar" id="myNavbar">
+    <a href="#i">👉 </a>
+    <a href="#like">👉 </a>
+    <a href="#nav">👉 </a>
+    <a href="#bar">👉 </a>
+    <a href="javascript:void(0);"  class="icon" onclick="myFunction()">🍫</a>
+</div>
+<div class="container">
 	<div class="row">
 		<div class="4u 5u(large) naan-content-panel">
 			<div class="panel-emoji loaded">
 				<div class="naan-weather">
 					<div class="weather-container">
 						<div id="weather-details">
-							<span class="location">{{weather.location}}</span>
-							<div class="temperature">
-								<img src="/src/images/weather/{{weather.keyword}}.png">
-								<span>{{weather.temperature}} °C</span>
+							<div *ngIf="weather">
+								<span class="location">{{weather.location}}</span>
+								<div class="temperature">
+									<img src="/src/images/weather/{{weather.keyword}}.png">
+									<span>{{weather.temperature}} °C</span>
+								</div>
 							</div>
+							<div *ngIf="!weather"><span class="location">Loading</span></div>
 						</div>
 						<div id="weather-comments">
 							<span class="naan-icon naan-iconcircles-dash"><span class="path1"></span><span class="path2"></span><span class="path3"></span></span>
@@ -24,12 +34,15 @@
 							<p>언제든 관련 표정을 선택해주세요!</p>
 						</div>
 						<div class="emoji-wrapper">
-							<div class="row">
+							<div class="row" *ngIf="weather">
 								<div class="emoji-content 4u" *ngFor="let emoji of emojis">
 									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name!=selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name, emoji.cover_color); $event.stopPropagation()"/>
 									<img src={{emoji.src}} *ngIf="emoji.name&&emoji.name==selectedEmoji" class="click-o" (click)="onClickEmoji(emoji.name, emoji.cover_color); $event.stopPropagation()" style="opacity:0.2;"/>
 									<img src={{emoji.src}} *ngIf="emoji.name==''"  class="click-x"/>
 								</div>
+							</div>
+							<div class="row" *ngIf="!weather">
+								<span class="location">Loading</span>
 							</div>
 						</div>
 					</div>
