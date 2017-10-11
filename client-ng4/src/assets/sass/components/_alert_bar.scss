@@ -1,23 +1,70 @@
-.navbar {
-  overflow: hidden;
-  background-color: #222;
+/**
+ *	Base Style
+ */
+.alert-navbar {
+	overflow: hidden;
+	background-color: #F7654F;
+	padding: 15px 78px;
+	p {
+		display: inline-block;
+		font-size: 26.25px;
+		color: white;
+		line-height: 49px;
+	}
 }
 
-.navbar a {
-  float: left;
-  display: block;
-  color: #f5f5f5;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+/**
+ *	3D Button
+ */
+.perspective {
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	perspective: 800px;
+	display: inline-block;
+	float: right;
 }
-
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
+.special-btn-3d {
+	text-align: right;
+	padding: 8px 39px 8px 21px;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #F8DC57;
+	font-size: 28px;
+	text-decoration: none;
+	cursor: pointer;
+	@include vendor('transition', (
+		'transform #{_duration(cal_y)} ease-in-out',
+	));
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	&:after {
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 100%;
+		background: #d0601b;
+		-webkit-transform-origin: 0% 0%;
+		-webkit-transform: rotateX(-77deg);
+		-moz-transform-origin: 0% 0%;
+		-moz-transform: rotateX(-77deg);
+		-ms-transform-origin: 0% 0%;
+		-ms-transform: rotateX(-77deg);
+		transform-origin: 0% 0%;
+		transform: rotateX(-77deg);
+	}
+	&:hover {
+		-webkit-transform: rotateX(15deg);
+		-moz-transform: rotateX(15deg);
+		-ms-transform: rotateX(15deg);
+		transform: rotateX(15deg);
+		border-radius: 0;
+	}
 }
-
-.navbar .icon {
-  display: none;
+.btn-3d:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
 }
