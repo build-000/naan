@@ -97,7 +97,7 @@ export class TrackService {
     })
   }
   getTracks(mood: string, weather : string): Promise<Track[]> {
-    let url = `${this.trackUrl}?mood=${mood}&weather=${weather}`;
+    let url = `${this.trackUrl}?mood=${mood}&weather=${weather}&bot=stephanie`;
       return new Promise((resolve,reject)=>{
           this.http.get(url).subscribe(
             list => {

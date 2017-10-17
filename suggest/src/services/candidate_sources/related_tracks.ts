@@ -3,8 +3,9 @@ import * as debug from "debug";
 import * as _ from "lodash";
 import * as request from "request";
 
-import { CandidateItem, DataSource, MOOD, WEATHER } from "./base";
+import { CandidateItem, DataSource, MOOD, WEATHER, BOT } from "./base";
 import MAPPED_SET = require("./mapped_data");
+import MAPPED_SET_STEPHANIE = require("./mapped_data_stephanie");
 
 export class RelatedTrackDataSource implements DataSource<CandidateItem> {
   private readonly LOG_TAG = "naan-suggest:related-track";
@@ -14,14 +15,27 @@ export class RelatedTrackDataSource implements DataSource<CandidateItem> {
   constructor(
     private mood: MOOD,
     private weather: WEATHER,
+    private bot: BOT,
     private clientId: string,
   ) {}
 
   public async fetch(count: number = 100) {
-    const mappedTrackIds = MAPPED_SET.filter((set) => {
-      return set.mood === this.mood &&
-        set.weather === this.weather;
-    }).map((set) => set.id);
+    console.log('fetch!');
+    console.log('bot : ' + this.bot);
+    var mappedTrackIds;
+    if (this.bot == 'stephanie') {
+      console.log('bot is stephanie :)');
+      mappedTrackIds = MAPPED_SET_STEPHANIE.filter((set) => {
+        return set.mood === this.mood &&
+          set.weather === this.weather;
+      }).map((set) => set.id);
+    } else {
+      console.log('default bot selected :)');
+      mappedTrackIds = MAPPED_SET.filter((set) => {
+        return set.mood === this.mood &&
+          set.weather === this.weather;
+      }).map((set) => set.id);
+    }
     const mappedTrackLength = mappedTrackIds.length;
     var randNum = Math.floor(Math.random() * (mappedTrackLength));
     const relatedTracks = await this.getRelatedTracks(mappedTrackIds[randNum]);

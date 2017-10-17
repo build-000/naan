@@ -1,12 +1,17 @@
 import { Event } from "../../interfaces/lambda-proxy";
 import { Suggester } from "../../services/suggest";
-import { MOOD, WEATHER } from "../../services/candidate_sources/base";
+import { MOOD, WEATHER, BOT } from "../../services/candidate_sources/base";
 
 const ACCEPTABLE_MOODS = {
   [MOOD.RELAXED]: true,
   [MOOD.HAPPY]: true,
   [MOOD.ANGRY]: true,
   [MOOD.SAD]: true,
+  [MOOD.AMAZING]: true,
+  [MOOD.SICK]: true,
+  [MOOD.DISGUSTING]: true,
+  [MOOD.LOVELY]: true,
+  [MOOD.SLEEPY]: true,
 };
 
 const ACCEPTABLE_WEATHERS = {
@@ -14,6 +19,11 @@ const ACCEPTABLE_WEATHERS = {
   [WEATHER.COOL]: true,
   [WEATHER.RAINY]: true,
   [WEATHER.SNOWY]: true,
+};
+
+const ACCEPTABLE_BOT = {
+  [BOT.STEPHANIE]: true,
+  [BOT.RUUCM]: true,
 };
 
 var process = { env: { SOUNDCLOUD_CLIENT_ID: '761LMfrpB07DQlPhf7rbKo5fLsBuMaKH' } };
@@ -24,7 +34,7 @@ export default async function(event: Event) {
 
 export var suggest_tracks = async function(event: Event) {
   const query = event.queryStringParameters || {};
-  const { mood, weather, debug } = query;
+  const { mood, weather, bot, debug } = query;
   const count = +query.count || 20;
 
   if (!ACCEPTABLE_MOODS[mood]) {
@@ -35,7 +45,11 @@ export var suggest_tracks = async function(event: Event) {
     return renderError(`weather ${weather} is not allowed value`, 400);
   }
 
-  const suggester = new Suggester(mood as MOOD, weather as WEATHER, process.env.SOUNDCLOUD_CLIENT_ID);
+  // if (!ACCEPTABLE_BOT[bot]) {
+  //   return renderError(`bot ${bot} is not allowed value`, 400);
+  // }
+
+  const suggester = new Suggester(mood as MOOD, weather as WEATHER, bot as BOT , process.env.SOUNDCLOUD_CLIENT_ID);
   const candidates = await suggester.suggest(count);
   console.log('suggest_tracks ! ');
   return {

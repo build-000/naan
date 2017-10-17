@@ -1,7 +1,7 @@
 import * as BbPromise from "bluebird";
 import * as _ from "lodash";
 
-import { CandidateItem, DataSource, MOOD, WEATHER } from "./candidate_sources/base";
+import { CandidateItem, DataSource, MOOD, WEATHER, BOT } from "./candidate_sources/base";
 import { RelatedTrackDataSource } from "./candidate_sources/related_tracks";
 
 export class Suggester {
@@ -10,10 +10,11 @@ export class Suggester {
   constructor(
     private mood: MOOD,
     private weather: WEATHER,
+    private bot: BOT,
     private clientId: string,
   ) {
     this.sources = [
-      new RelatedTrackDataSource(this.mood, this.weather, this.clientId),
+      new RelatedTrackDataSource(this.mood, this.weather, this.bot, this.clientId),
     ];
   }
 

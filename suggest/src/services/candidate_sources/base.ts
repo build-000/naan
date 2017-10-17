@@ -10,6 +10,16 @@ export enum MOOD {
   HAPPY = "happy",
   SAD = "sad",
   RELAXED = "relaxed",
+  AMAZING = "amazing",
+  SICK = "sick",
+  DISGUSTING = "disgusting",
+  LOVELY = "lovely",
+  SLEEPY = "sleepy",
+}
+
+export enum BOT {
+  STEPHANIE = "stephanie",
+  RUUCM = "ruucm",
 }
 
 export interface DataSource<T> {

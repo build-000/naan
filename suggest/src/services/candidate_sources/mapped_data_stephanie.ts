@@ -1,0 +1,485 @@
+export = [{
+  // amazing
+  id: 141357506,
+  mood: "amazing",
+  weather: "warm",
+}, {
+  id: 149878587,
+  mood: "amazing",
+  weather: "warm",
+}, {
+  id: 199850286,
+  mood: "amazing",
+  weather: "warm",
+}, {
+  id: 288458810,
+  mood: "amazing",
+  weather: "warm",
+}, {
+  id: 183650853,
+  mood: "amazing",
+  weather: "warm",
+}, {
+  id: 216270790,
+  mood: "amazing",
+  weather: "cool",
+}, {
+  id: 343890331,
+  mood: "amazing",
+  weather: "cool",
+}, {
+  id: 296408216,
+  mood: "amazing",
+  weather: "cool",
+}, {
+  id: 266440588,
+  mood: "amazing",
+  weather: "cool",
+}, {
+  // sick
+  id: 188858808,
+  mood: "sick",
+  weather: "cool",
+}, {
+  id: 188858808,
+  mood: "sick",
+  weather: "cool",
+}, {
+  // disgusting
+  id: 268238822,
+  mood: "disgusting",
+  weather: "cool",
+}, {
+  id: 27971896,
+  mood: "disgusting",
+  weather: "cool",
+}, {
+  // lovely
+  id: 115482536,
+  mood: "lovely",
+  weather: "cool",
+}, {
+  id: 223228432,
+  mood: "lovely",
+  weather: "cool",
+}, {
+  id: 215051884,
+  mood: "lovely",
+  weather: "cool",
+}, {
+  // 소북섭
+  id: 329405148,
+  mood: "angry",
+  weather: "cool",
+}, {
+  id: 334078425,
+  mood: "angry",
+  weather: "rainy",
+}, {
+  id: 317594712,
+  mood: "angry",
+  weather: "snowy",
+}, {
+  id: 9280642,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 261587226,
+  mood: "sad",
+  weather: "warm",
+}, {
+  id: 319745630,
+  mood: "relaxed",
+  weather: "cool",
+}, {
+  id: 252088570,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 265897429,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 191477804,
+  mood: "sad",
+  weather: "snowy",
+}, {
+  id: 222349341,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 66424164,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 48066475,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 287673956,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 237514750,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 331802739,
+  mood: "angry",
+  weather: "warm",
+}, {
+  // 최병규
+  id: 225768931,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 4720038,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 59494967,
+  mood: "relaxed",
+  weather: "cool",
+}, {
+  id: 278035024,
+  mood: "angry",
+  weather: "rainy",
+}, {
+  id: 83957298,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 283976235,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 18853020,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 309664621,
+  mood: "relaxed",
+  weather: "snowy",
+}, {
+  id: 273653401,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 53834846,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 335845428,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 165204531,
+  mood: "sad",
+  weather: "warm",
+}, {
+  id: 89789349,
+  mood: "angry",
+  weather: "warm",
+}, {
+  id: 319745630,
+  mood: "relaxed",
+  weather: "cool",
+}, {
+  id: 261587226,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 194375621,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 278939950,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 177683998,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 90473982,
+  mood: "angry",
+  weather: "rainy",
+}, {
+  // 이무열
+  id: 329405148,
+  mood: "angry",
+  weather: "cool",
+}, {
+  id: 191477804,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 309689093,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 337861748,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 330243250,
+  mood: "angry",
+  weather: "rainy",
+}, {
+  id: 337499778,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 322834362,
+  mood: "sad",
+  weather: "snowy",
+}, {
+  id: 328321308,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 323674116,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 318511652,
+  mood: "angry",
+  weather: "cool",
+}, {
+  id: 337499852,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 310583525,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 338997519,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 294656176,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 312797091,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 317594712,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 334078425,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 337690664,
+  mood: "angry",
+  weather: "snowy",
+}, {
+  id: 223893537,
+  mood: "relaxed",
+  weather: "snowy",
+}, {
+  id: 194510401,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 285588137,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 250830766,
+  mood: "relaxed",
+  weather: "cool",
+}, {
+  id: 329292478,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 187805747,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 336226146,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 338254070,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 245596502,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 222238653,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 339120433,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 240337613,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 283917050,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 334897533,
+  mood: "relaxed",
+  weather: "warm",
+}, {
+  id: 210195404,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 224482176,
+  mood: "sad",
+  weather: "snowy",
+}, {
+  id: 336265542,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 290091512,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 229769876,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 223018078,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 333894998,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 271153056,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 330713902,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 173297698,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 263201308,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 86154052,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 123043051,
+  mood: "relaxed",
+  weather: "snowy",
+}, {
+  id: 338418397,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 339286770,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 65660780,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 144848972,
+  mood: "angry",
+  weather: "snowy",
+}, {
+  id: 293903469,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  // 지용민
+  id: 250711755,
+  mood: "happy",
+  weather: "warm",
+}, {
+  id: 244184510,
+  mood: "sad",
+  weather: "warm",
+}, {
+  id: 248310182,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 67230735,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 338175131,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 165467569,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 325149529,
+  mood: "angry",
+  weather: "warm",
+}, {
+  id: 113662676,
+  mood: "happy",
+  weather: "rainy",
+}, {
+  id: 45719017,
+  mood: "angry",
+  weather: "snowy",
+}, {
+  id: 192408098,
+  mood: "relaxed",
+  weather: "snowy",
+}, {
+  id: 218324566,
+  mood: "sad",
+  weather: "rainy",
+}, {
+  id: 296297730,
+  mood: "angry",
+  weather: "rainy",
+}, {
+  id: 147235179,
+  mood: "relaxed",
+  weather: "rainy",
+}, {
+  id: 264023874,
+  mood: "happy",
+  weather: "cool",
+}, {
+  id: 257939729,
+  mood: "angry",
+  weather: "cool",
+}, {
+  id: 147178584,
+  mood: "sad",
+  weather: "cool",
+}, {
+  id: 132283555,
+  mood: "happy",
+  weather: "snowy",
+}, {
+  id: 266129780,
+  mood: "sad",
+  weather: "snowy",
+}, {
+  id: 232886537,
+  mood: "relaxed",
+  weather: "warm",
+}];
