@@ -1,0 +1,80 @@
+/**
+ *	Base Style
+ */
+.alert-navbar {
+	overflow: hidden;
+	background-color: #F7654F;
+	padding: 15px 78px;
+	p {
+		display: inline-block;
+		font-size: 26.25px;
+		color: white;
+		line-height: 49px;
+	}
+}
+
+/**
+ *	3D Button
+ */
+.perspective {
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	perspective: 800px;
+	display: inline-block;
+	float: right;
+}
+.special-btn-3d {
+	text-align: right;
+	padding: 8px 39px 8px 21px;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #F8DC57;
+	font-size: 28px;
+	text-decoration: none;
+	cursor: pointer;
+	@include vendor('transition', (
+		'transform #{_duration(cal_y)} ease-in-out',
+	));
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	&:after {
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 100%;
+		background: #d0601b;
+		-webkit-transform-origin: 0% 0%;
+		-webkit-transform: rotateX(-77deg);
+		-moz-transform-origin: 0% 0%;
+		-moz-transform: rotateX(-77deg);
+		-ms-transform-origin: 0% 0%;
+		-ms-transform: rotateX(-77deg);
+		transform-origin: 0% 0%;
+		transform: rotateX(-77deg);
+	}
+	&:hover {
+		-webkit-transform: rotateX(15deg);
+		-moz-transform: rotateX(15deg);
+		-ms-transform: rotateX(15deg);
+		transform: rotateX(15deg);
+		border-radius: 0;
+	}
+}
+.btn-3d:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+}
+
+@include breakpoint(xsmall) {
+	.alert-navbar {
+		padding: 75px;
+	}
+	.special-btn-3d {
+		margin-top: 55px;
+	}
+}
+
