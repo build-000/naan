@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { EmojiService } from './emoji.service';
 import { WeatherService } from './weather.service';
 import { TrackService } from './track.service';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { TrackService } from './track.service';
     HttpClientModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
-    AppRoutingModule
+    AppRoutingModule,
+    Angulartics2Module,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
   ],
   declarations: [
     AppComponent

@@ -11,6 +11,8 @@ import { Track } from './track';
 import { TrackService } from './track.service';
 
 import * as $ from 'jquery';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
 	styleUrls: ['../assets/sass/main.scss'],
@@ -33,7 +35,9 @@ export class AppComponent implements OnInit {
 		private emojiService : EmojiService,
 		private weatherService : WeatherService,
 		private trackService : TrackService,
-		private ref: ChangeDetectorRef
+		private ref: ChangeDetectorRef,
+		angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+		private angulartics2: Angulartics2
 	){}
 	ngOnInit() {
 		this.track = new Track;
@@ -77,9 +81,15 @@ export class AppComponent implements OnInit {
 		}
 	}
 	onClickEmoji(mood : string, cover_color : string): void {
+		console.info('mood : ' + mood);
 		if (!mood){
 			return;
 		}
+		this.angulartics2.eventTrack.next({ 
+			action: 'onClickEmoji', 
+			properties: { category: mood },
+		});
+		console.info('event send');
 		this.changePlayerColor(cover_color);
 		this.variableDataClear();
 		this.close_emoji_mobile();

@@ -35,7 +35,7 @@ export class WeatherService {
   getLocation():Promise<string> {
     return new Promise((resolve, reject)=>{
       navigator.geolocation.getCurrentPosition(position => {
-        let url = `https://7uiw9d5ck3.execute-api.ap-northeast-2.amazonaws.com/dev/weather?lat=${position.coords.latitude}&lng=${position.coords.longitude}`;
+        let url = `https://ylmflbtrfk.execute-api.ap-northeast-2.amazonaws.com/dev/weather?lat=${position.coords.latitude}&lng=${position.coords.longitude}`;
         resolve(url);
       });
     })
